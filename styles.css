@@ -106,3 +106,63 @@ button:hover {
 .comments-container button:hover {
   background-color: #45a049;
 }
+/* Existing styles */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+  position: relative;
+}
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: -1;
+}
+
+header, footer {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  text-align: center;
+}
+
+header nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+header nav ul li {
+  margin: 0 10px;
+}
+
+header nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+main {
+  text-align: center;
+  padding: 50px;
+}
