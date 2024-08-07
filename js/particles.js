@@ -1,5 +1,4 @@
-// Загрузка библиотеки Particles.js
-particlesJS('particles-container', {
+particlesJS('particles-js', {
     "particles": {
         "number": {
             "value": 100,
@@ -16,51 +15,39 @@ particlesJS('particles-container', {
             "stroke": {
                 "width": 0,
                 "color": "#000000"
-            },
-            "polygon": {
-                "nb_sides": 5
             }
         },
         "opacity": {
-            "value": 0.5,
+            "value": 0.6,
             "random": true,
             "anim": {
-                "enable": false,
+                "enable": true,
                 "speed": 1,
                 "opacity_min": 0.1,
                 "sync": false
             }
         },
         "size": {
-            "value": 3,
+            "value": 4,
             "random": true,
             "anim": {
-                "enable": false,
-                "speed": 4,
+                "enable": true,
+                "speed": 3,
                 "size_min": 0.1,
                 "sync": false
             }
         },
         "line_linked": {
-            "enable": false,
-            "distance": 150,
-            "color": "#ffffff",
-            "opacity": 0.4,
-            "width": 1
+            "enable": false
         },
         "move": {
             "enable": true,
-            "speed": 1,
+            "speed": 2,
             "direction": "none",
             "random": false,
-            "straight": false,
             "out_mode": "out",
             "bounce": false,
-            "attract": {
-                "enable": false,
-                "rotateX": 600,
-                "rotateY": 1200
-            }
+            "straight": false
         }
     },
     "interactivity": {
