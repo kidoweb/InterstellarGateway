@@ -213,3 +213,24 @@ footer {
     height: 100%;
     z-index: -1; /* Размещает партиклы за основным контентом */
 }
+/* styles.css */
+
+/* Адаптивный дизайн */
+@media only screen and (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .header, .footer {
+        text-align: center;
+    }
+
+    .news-item {
+        font-size: 14px;
+    }
+    
+    #news-form input,
+    #news-form textarea {
+        width: 100%;
+    }
+}
