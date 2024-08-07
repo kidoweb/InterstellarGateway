@@ -173,3 +173,32 @@ footer {
 #news-form button {
     padding: 10px 20px;
 }
+/* Стили для административных кнопок и новостей */
+.admin-controls button {
+    margin-right: 10px;
+}
+
+.news-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.comments {
+    margin-top: 10px;
+}
+
+#add-news-form {
+    margin-top: 20px;
+}
+
+#news-form input,
+#news-form textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+}
+
+#news-form button {
+    padding: 10px 20px;
+}
