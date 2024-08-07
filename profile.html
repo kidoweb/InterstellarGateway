@@ -1,0 +1,41 @@
+<!-- profile.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль - Interstellar Gateway</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="module" src="js/profile.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Главная</a>
+            <a href="news.html">Новости</a>
+            <a href="profile.html">Профиль</a>
+            <a href="discord.html">Discord</a>
+        </nav>
+    </header>
+    
+    <main>
+        <h1>Профиль пользователя</h1>
+        <div id="profile-info">
+            <img id="profile-avatar" src="" alt="Аватар">
+            <p id="profile-username">Имя пользователя</p>
+            <p id="profile-email">Электронная почта</p>
+            <button id="edit-profile">Редактировать профиль</button>
+        </div>
+        <div id="ban-section" style="display: none;">
+            <h2>Управление пользователями</h2>
+            <button id="ban-user">Забанить пользователя</button>
+            <button id="unban-user">Разбанить пользователя</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>@Interstellar Gateway Все права защищены.</p>
+        <a href="privacy-policy.html">Политика конфиденциальности</a>
+    </footer>
+</body>
+</html>
