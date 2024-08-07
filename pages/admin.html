@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interstellar Gateway - Админ-панель</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/admin.js" defer></script>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="header-container">
+            <img src="img/logo.png" alt="Логотип" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="news.html">Новости</a></li>
+                    <li><a href="login.html">Вход</a></li>
+                    <li><a href="discord.html">Discord</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Основной контент страницы -->
+    <main>
+        <div class="admin-container">
+            <h1>Админ-панель</h1>
+            
+            <!-- Управление новостями -->
+            <section class="admin-section">
+                <h2>Управление новостями</h2>
+                <button id="addNewsButton">Добавить новость</button>
+                <div id="newsList">
+                    <!-- Список новостей будет загружен сюда -->
+                </div>
+            </section>
+
+            <!-- Управление пользователями -->
+            <section class="admin-section">
+                <h2>Управление пользователями</h2>
+                <button id="manageUsersButton">Управлять пользователями</button>
+                <div id="usersList">
+                    <!-- Список пользователей будет загружен сюда -->
+                </div>
+            </section>
+
+            <!-- Управление серверами -->
+            <section class="admin-section">
+                <h2>Управление серверами</h2>
+                <button id="manageServersButton">Управлять серверами</button>
+                <div id="serversList">
+                    <!-- Список серверов будет загружен сюда -->
+                </div>
+            </section>
+
+            <button id="logoutButton">Выйти</button>
+        </div>
+    </main>
+
+    <!-- Панель с правами -->
+    <footer>
+        <div class="footer-container">
+            <p>&copy; Interstellar Gateway Все права защищены.</p>
+            <a href="privacy.html">Политика конфиденциальности</a>
+        </div>
+    </footer>
+
+    <!-- Скрипт для админ-панели -->
+    <script>
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            // Логика выхода из аккаунта
+            window.location.href = 'login.html';
+        });
+
+        document.getElementById('addNewsButton').addEventListener('click', function() {
+            // Логика добавления новости
+            alert('Функция добавления новости');
+        });
+
+        document.getElementById('manageUsersButton').addEventListener('click', function() {
+            // Логика управления пользователями
+            alert('Функция управления пользователями');
+        });
+
+        document.getElementById('manageServersButton').addEventListener('click', function() {
+            // Логика управления серверами
+            alert('Функция управления серверами');
+        });
+    </script>
+</body>
+</html>
