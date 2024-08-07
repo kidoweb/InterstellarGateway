@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InterstellarGateway</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="news.html">Новости</a></li>
+        <li><a href="profile.html">Профиль</a></li>
+        <li id="login-link"><a href="login.html">Войти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Добро пожаловать в InterstellarGateway</h1>
+    <div class="server-card">
+      <script type='text/javascript' src='//garrys-servers.ru/web/api-YOUR_SERVER_ID.js'></script>
+      <b>Название сервера:</b> <script type='text/javascript'>document.write(api.hostname);</script><br/>
+      <b>Адрес сервера:</b> <script type='text/javascript'>document.write(api.ip + ':' + api.port);</script><br/>
+      <b>Версия сервера:</b> <script type='text/javascript'>document.write(api.version);</script><br/>
+      <b>Мод сервера:</b> <script type='text/javascript'>document.write(api.gamemode);</script><br/>
+      <b>Текущий онлайн:</b> <script type='text/javascript'>document.write(api.players +' из '+ api.maxplayers);</script> игроков<br/>
+      <b>Рекорд игроков:</b> <script type='text/javascript'>document.write(api.record);</script><br/>
+      <b>Последнее обновление информации:</b> <script type='text/javascript'>document.write(api.lastconnect);</script><br/>
+      <b>Статус сервера:</b> <script type='text/javascript'>
+        if ( api.status == 1 ) {
+          document.write("<font style='color: green;'>Работает</font><br />");
+        } else {
+          document.write("<font style='color: red;'>Сервер недоступен</font><br />");
+        }
+      </script>
+      <b>Рейтинг сервера:</b> <script type='text/javascript'>document.write(api.votes);</script>
+    </div>
+    <button onclick="window.location.href='https://discord.gg/sn28ff4Zwq'">Подключиться к Discord серверу</button>
+  </main>
+
+  <footer>
+    <p>Copyright © 2024 InterstellarGateway.</p>
+    <p><a href="#">Политика конфиденциальности</a></p>
+  </footer>
+
+  <script src="scripts/main.js"></script>
+</body>
+</html>
