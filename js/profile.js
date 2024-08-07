@@ -1,9 +1,9 @@
-// js/profile.js
+// Инициализация Firebase Auth и Database
+import { getAuth, onAuthStateChanged, updateProfile } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+import { getDatabase, ref, set, update, onValue } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
 
-// Ваши параметры Firebase
+// Конфигурация Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyBo6sm-D7KpWhnYkjZrhJnoIE0sNwpTVIc",
     authDomain: "interstellargateway-149ae.firebaseapp.com",
@@ -20,32 +20,44 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase(app);
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Проверка состояния аутентификации
-    onAuthStateChanged(auth, (user) => {
-        if (!user) {
-            window.location.href = 'login.html'; // Перенаправление на вход при отсутствии пользователя
-            return;
-        }
+// Функция для отображения информации о пользователе
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        // Пользователь вошел
+        document.getElementById('username').textContent = user.displayName || 'Не установлен';
+        document.getElementById('user-email').textContent = user.email;
+        // Здесь можно добавить код для загрузки дополнительных данных профиля из базы данных
+    } else {
+        // Пользователь не вошел
+        window.location.href = 'login.html'; // Перенаправление на страницу входа
+    }
+});
 
-        const userId = user.uid;
-        const profileRef = ref(database, 'users/' + userId);
+// Обработчик формы для обновления профиля
+document.getElementById('profile-form').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-        // Получение данных профиля
-        onValue(profileRef, (snapshot) => {
-            const data = snapshot.val();
-            document.getElementById('profile-avatar').src = data.avatar || 'default-avatar.png';
-            document.getElementById('profile-username').textContent = data.username || 'Имя пользователя';
-        });
+    const displayName = document.getElementById('display-name').value;
+    const user = auth.currentUser;
 
-        // Обработка выхода из аккаунта
-        document.getElementById('logout-button').addEventListener('click', async () => {
-            try {
-                await signOut(auth);
-                window.location.href = 'login.html'; // Перенаправление на вход после выхода
-            } catch (error) {
-                alert('Ошибка выхода: ' + error.message);
-            }
-        });
+    if (user) {
+        updateProfile(user, { displayName: displayName })
+            .then(() => {
+                alert('Профиль обновлен.');
+                // Обновление информации о пользователе на странице
+                document.getElementById('username').textContent = displayName;
+            })
+            .catch((error) => {
+                alert("Ошибка обновления профиля: " + error.message);
+            });
+    }
+});
+
+// Обработчик кнопки выхода из аккаунта
+document.getElementById('logout-button').addEventListener('click', function() {
+    auth.signOut().then(() => {
+        window.location.href = 'login.html'; // Перенаправление на страницу входа
+    }).catch((error) => {
+        alert("Ошибка выхода: " + error.message);
     });
 });
