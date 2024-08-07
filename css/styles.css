@@ -236,3 +236,8 @@ footer {
         width: 100%;
     }
 }
+/* styles.css */
+#content {
+    position: relative;
+    z-index: 1; /* Контент должен быть выше партиклов */
+}
