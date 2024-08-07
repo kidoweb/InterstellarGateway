@@ -1,6 +1,7 @@
 // js/profile.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-import { getDatabase, ref, onValue, update, set } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
 
 // Ваши параметры Firebase
 const firebaseConfig = {
@@ -16,35 +17,35 @@ const firebaseConfig = {
 
 // Инициализация Firebase
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 const database = getDatabase(app);
 
-document.addEventListener('DOMContentLoaded', function() {
-    const userId = 'exampleUserId'; // Замените на реальный идентификатор пользователя
-    const profileRef = ref(database, 'users/' + userId);
-
-    // Загрузка информации о профиле
-    onValue(profileRef, (snapshot) => {
-        const data = snapshot.val();
-        document.getElementById('profile-avatar').src = data.avatar || 'default-avatar.png';
-        document.getElementById('profile-username').textContent = data.username || 'Имя пользователя';
-        document.getElementById('profile-email').textContent = data.email || 'Электронная почта';
-
-        // Показать раздел управления пользователями, если пользователь - администратор или модератор
-        if (data.role === 'admin' || data.role === 'moderator') {
-            document.getElementById('ban-section').style.display = 'block';
+document.addEventListener('DOMContentLoaded', () => {
+    // Проверка состояния аутентификации
+    onAuthStateChanged(auth, (user) => {
+        if (!user) {
+            window.location.href = 'login.html'; // Перенаправление на вход при отсутствии пользователя
+            return;
         }
-    });
 
-    // Обработчики кнопок
-    document.getElementById('edit-profile').addEventListener('click', function() {
-        // Логика для редактирования профиля
-    });
+        const userId = user.uid;
+        const profileRef = ref(database, 'users/' + userId);
 
-    document.getElementById('ban-user').addEventListener('click', function() {
-        // Логика для бана пользователя
-    });
+        // Получение данных профиля
+        onValue(profileRef, (snapshot) => {
+            const data = snapshot.val();
+            document.getElementById('profile-avatar').src = data.avatar || 'default-avatar.png';
+            document.getElementById('profile-username').textContent = data.username || 'Имя пользователя';
+        });
 
-    document.getElementById('unban-user').addEventListener('click', function() {
-        // Логика для разбана пользователя
+        // Обработка выхода из аккаунта
+        document.getElementById('logout-button').addEventListener('click', async () => {
+            try {
+                await signOut(auth);
+                window.location.href = 'login.html'; // Перенаправление на вход после выхода
+            } catch (error) {
+                alert('Ошибка выхода: ' + error.message);
+            }
+        });
     });
 });
