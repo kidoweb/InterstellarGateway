@@ -1,156 +1,101 @@
-/* Основные стили для сайта */
+/* Общие стили для всего сайта */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: #000; /* Космический черный фон */
+    background: #000; /* Черный фон для космического стиля */
     color: #fff;
 }
 
-/* Шапка сайта */
-header {
-    background: #111; /* Темный фон для шапки */
-    padding: 20px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-}
-
-.header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logo {
-    height: 50px;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-}
-
-nav ul li a:hover {
-    color: #0f0; /* Космический акцент */
-}
-
-/* Основной контент страницы */
-main {
-    margin-top: 80px; /* Отступ для шапки */
-    padding: 20px;
-}
-
-.auth-container, .profile-container, .admin-container, .discord-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.7); /* Полупрозрачный фон для контента */
-    border-radius: 10px;
-}
-
-button {
-    background-color: #0f0; /* Космический акцент */
-    color: #000;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-button:hover {
-    background-color: #0c0;
-}
-
-input[type="email"], input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #333;
-    border-radius: 5px;
-    background: #222;
-    color: #fff;
-}
-
-input[type="email"]::placeholder, input[type="password"]::placeholder {
-    color: #aaa;
-}
-
-.password-container {
-    display: flex;
-    align-items: center;
-}
-
-#togglePassword {
-    background: none;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    font-size: 18px;
-    margin-left: -30px; /* Сдвиг иконки влево */
-}
-
-/* Панель с правами */
-footer {
-    background: #111;
+header, footer {
+    background: #111; /* Темно-серый фон для шапки и подвала */
     padding: 10px;
     text-align: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
 }
 
-.footer-container p {
-    margin: 0;
+header img {
+    max-width: 150px;
+    height: auto;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 16px;
+}
+
+nav a:hover {
+    background: #333; /* Цвет фона при наведении на ссылки */
+    border-radius: 5px;
+}
+
+footer {
     font-size: 14px;
 }
 
-.footer-container a {
-    color: #0f0;
+footer a {
+    color: #0f0; /* Цвет для ссылок в подвале */
     text-decoration: none;
 }
 
-.footer-container a:hover {
+footer a:hover {
     text-decoration: underline;
 }
 
-/* Стили для страницы с партиклами */
-.particles-container {
-    position: absolute;
-    top: 0;
-    left: 0;
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+form {
+    background: #222;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+form input, form button {
+    display: block;
     width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-
-.discord-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #7289da; /* Discord цвет */
-    color: #fff;
+    margin-bottom: 10px;
+    padding: 10px;
     border-radius: 5px;
-    text-decoration: none;
-    font-size: 16px;
-    text-align: center;
+    border: 1px solid #444;
 }
 
-.discord-button:hover {
-    background-color: #5b6eae;
+form input[type="submit"], form button {
+    background: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover, form button:hover {
+    background: #555;
+}
+
+/* Стиль для иконки глаза для предпросмотра пароля */
+.fa-eye {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Специфические стили для админ-панели */
+#admin-panel {
+    display: none;
+    background: #222;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+#admin-panel form {
+    margin-bottom: 20px;
 }
