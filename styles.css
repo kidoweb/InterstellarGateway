@@ -125,13 +125,14 @@ footer p {
 /* Элементы частиц */
 #particles-js {
   position: fixed;
-  z-index: 1;
+  z-index: -1; /* Поставить за весь контент */
   left: 0;
   top: 0;
   width: 100vw;
   height: 100vh;
   background: transparent;
 }
+
 
 /* Счетчик частиц */
 .count-particles {
