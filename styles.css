@@ -273,3 +273,23 @@ footer {
   color: #007bff;
   text-decoration: none;
 }
+/* Анимация для кнопок навигации */
+nav ul li a {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover {
+  background-color: #007bff; /* Цвет фона при наведении */
+  color: white; /* Цвет текста при наведении */
+}
+
+/* Анимация для кнопки входа на странице входа */
+.login-form .form-button:hover {
+  background-color: #0056b3; /* Темнеший цвет фона при наведении */
+  opacity: 1; /* Убираем прозрачность при наведении */
+}
+
+/* Анимация для значка показа/скрытия пароля */
+.password-toggle:hover {
+  color: #0056b3; /* Цвет значка при наведении */
+}
