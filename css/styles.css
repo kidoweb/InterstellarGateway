@@ -1,51 +1,63 @@
-/* Общие стили */
+/* Основные стили */
 body {
-    font-family: 'Arial', sans-serif;
     margin: 0;
-    padding: 0;
-    color: #fff;
-    background-color: #000;
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+    background: #000000;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
-    background: #111;
-    padding: 10px 20px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+}
+
+.header-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #333;
+    justify-content: space-between;
 }
 
-header img {
-    height: 40px;
+.logo {
+    max-height: 50px;
 }
 
-header nav {
-    display: flex;
-}
-
-header nav a {
-    color: #fff;
+nav a {
+    color: #ffffff;
     text-decoration: none;
-    margin: 0 10px;
+    margin: 0 15px;
+    font-size: 18px;
 }
 
-header nav a:hover {
+nav a:hover {
     text-decoration: underline;
 }
 
-footer {
-    background: #111;
-    padding: 10px 20px;
+main {
+    z-index: 1;
+    padding: 100px 20px 20px;
     text-align: center;
-    border-top: 1px solid #333;
-    position: fixed;
-    bottom: 0;
+}
+
+footer {
+    position: absolute;
     width: 100%;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
 }
 
 footer a {
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
 }
 
@@ -53,63 +65,14 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* Общие стили для форм */
-form {
-    max-width: 600px;
-    margin: 0 auto;
+/* Стили для серверов */
+#servers {
+    margin-top: 20px;
+}
+
+.server {
+    background: rgba(255, 255, 255, 0.1);
     padding: 20px;
-    background: #222;
     border-radius: 8px;
-}
-
-form input, form button {
-    display: block;
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #444;
-}
-
-form input[type="submit"], form button {
-    background: #333;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
-form input[type="submit"]:hover, form button:hover {
-    background: #555;
-}
-
-/* Стили для главной страницы и новостей */
-#main-content {
-    padding: 20px;
-}
-
-.news-item {
-    background: #222;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-}
-
-.news-item h3 {
-    margin: 0;
-}
-
-.news-item p {
-    margin: 5px 0;
-}
-
-.news-item button {
-    background: #c00;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-}
-
-.news-item button:hover {
-    background: #a00;
+    margin: 10px;
 }
