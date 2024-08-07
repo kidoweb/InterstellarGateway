@@ -1,8 +1,8 @@
-// js/login.js
+// Инициализация Firebase Auth
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 
-// Ваши параметры Firebase
+// Конфигурация Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyBo6sm-D7KpWhnYkjZrhJnoIE0sNwpTVIc",
     authDomain: "interstellargateway-149ae.firebaseapp.com",
@@ -18,25 +18,27 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.getElementById('login-form');
+// Обработчик входа в аккаунт
+document.getElementById('login-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-    loginForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Вход выполнен успешно
+            window.location.href = 'profile.html'; // Перенаправление на страницу профиля
+        })
+        .catch((error) => {
+            alert("Ошибка входа: " + error.message);
+        });
+});
 
-        try {
-            await signInWithEmailAndPassword(auth, email, password);
-            window.location.href = 'profile.html'; // Перенаправление на профиль после входа
-        } catch (error) {
-            alert('Ошибка входа: ' + error.message);
-        }
-    });
-
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            window.location.href = 'profile.html'; // Если пользователь уже вошёл, перенаправляем на профиль
-        }
-    });
+// Функция для предпросмотра пароля
+document.getElementById('togglePassword').addEventListener('click', function() {
+    const passwordField = document.getElementById('password');
+    const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordField.setAttribute('type', type);
+    this.classList.toggle('fa-eye');
 });
