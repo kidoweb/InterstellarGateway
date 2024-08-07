@@ -13,7 +13,7 @@
         <nav>
             <a href="index.html">Главная</a>
             <a href="news.html">Новости</a>
-            <a href="profile.html">Профиль</a>
+            <a href="login.html">Вход</a>
             <a href="discord.html">Discord</a>
         </nav>
     </header>
@@ -21,15 +21,12 @@
     <main>
         <h1>Регистрация</h1>
         <form id="register-form">
-            <label for="email">Электронная почта</label>
-            <input type="email" id="email" required>
-            
-            <label for="password">Пароль</label>
-            <input type="password" id="password" required>
-            
+            <input type="text" id="username" placeholder="Имя пользователя" required>
+            <input type="email" id="email" placeholder="Электронная почта" required>
+            <input type="password" id="password" placeholder="Пароль" required>
             <button type="submit">Зарегистрироваться</button>
-            <p>Уже есть аккаунт? <a href="login.html">Войти</a></p>
         </form>
+        <p>Уже есть аккаунт? <a href="login.html">Вход</a></p>
     </main>
 
     <footer>
