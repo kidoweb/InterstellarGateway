@@ -1,28 +1,67 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InterstellarGateway</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!-- Включение header -->
-    <div id="header"></div>
-    
-    <!-- Основной контент -->
-    <main>
-        <h1>Добро пожаловать на InterstellarGateway</h1>
-        <p>Здесь вы найдете информацию о наших игровых серверах Garry's Mod.</p>
-    </main>
-    
-    <!-- Включение footer -->
-    <div id="footer"></div>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
-    <script>
-        // Включение header и footer
-        document.getElementById('header').innerHTML = '<object type="text/html" data="header.html"></object>';
-        document.getElementById('footer').innerHTML = '<object type="text/html" data="footer.html"></object>';
-    </script>
-</body>
-</html>
+header {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin: 0 10px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+header nav ul li a:hover {
+    background-color: #555;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+footer .footer-content a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+footer .footer-content a:hover {
+    text-decoration: underline;
+}
