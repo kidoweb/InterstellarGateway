@@ -1,5 +1,4 @@
-// Инициализация Firebase Auth и Database
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+// Инициализация Firebase
 import { getDatabase, ref, set, update, remove, onValue } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 
@@ -17,64 +16,37 @@ const firebaseConfig = {
 
 // Инициализация Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
 const database = getDatabase(app);
 
-// Проверка прав доступа администратора
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-        const userId = user.uid;
-        const userRef = ref(database, 'users/' + userId);
-        
-        onValue(userRef, (snapshot) => {
-            const userData = snapshot.val();
-            if (userData && (userData.role === 'admin' || userData.role === 'moderator')) {
-                document.getElementById('admin-panel').style.display = 'block';
-            } else {
-                window.location.href = 'login.html'; // Перенаправление на страницу входа
-            }
+// Загрузка и отображение новостей
+function loadNews() {
+    const newsRef = ref(database, 'news');
+    onValue(newsRef, (snapshot) => {
+        const newsContainer = document.getElementById('news-container');
+        newsContainer.innerHTML = ''; // Очистка контейнера перед обновлением
+        snapshot.forEach((childSnapshot) => {
+            const newsItem = childSnapshot.val();
+            const newsElement = document.createElement('div');
+            newsElement.className = 'news-item';
+            newsElement.innerHTML = `
+                <h3>${newsItem.title}</h3>
+                <p>${newsItem.content}</p>
+                <button onclick="deleteNews('${childSnapshot.key}')">Удалить</button>
+            `;
+            newsContainer.appendChild(newsElement);
         });
-    } else {
-        window.location.href = 'login.html'; // Перенаправление на страницу входа
-    }
-});
-
-// Обработчик формы для добавления новости
-document.getElementById('add-news-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const title = document.getElementById('news-title').value;
-    const content = document.getElementById('news-content').value;
-
-    const newNewsRef = ref(database, 'news/' + Date.now());
-    set(newNewsRef, {
-        title: title,
-        content: content,
-        timestamp: Date.now()
-    }).then(() => {
-        alert('Новость добавлена.');
-        document.getElementById('add-news-form').reset();
-    }).catch((error) => {
-        alert("Ошибка добавления новости: " + error.message);
     });
-});
+}
 
-// Обработчик удаления новости
+// Удаление новости
 function deleteNews(newsId) {
     const newsRef = ref(database, 'news/' + newsId);
     remove(newsRef).then(() => {
-        alert('Новость удалена.');
+        showNotification('Новость удалена.');
     }).catch((error) => {
-        alert("Ошибка удаления новости: " + error.message);
+        showNotification('Ошибка удаления новости: ' + error.message, 'error');
     });
 }
 
-// Обработчик редактирования новости
-function editNews(newsId, newContent) {
-    const newsRef = ref(database, 'news/' + newsId);
-    update(newsRef, { content: newContent }).then(() => {
-        alert('Новость обновлена.');
-    }).catch((error) => {
-        alert("Ошибка обновления новости: " + error.message);
-    });
-}
+// Загрузка новостей при инициализации страницы админ-панели
+document.addEventListener('DOMContentLoaded', loadNews);
