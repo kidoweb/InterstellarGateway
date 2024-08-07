@@ -30,6 +30,30 @@
     <h1>Добро пожаловать в InterstellarGateway</h1>
     <p>Сеть игровых серверов по Garry's Mod</p>
     <button onclick="location.href='https://discord.gg/sn28ff4Zwq'">Подключиться к Discord серверу</button>
+    
+    <section class="server-list">
+      <h2>Игровые сервера</h2>
+      <div class="server-card">
+        <h3>Сервер 1</h3>
+        <p><b>Название сервера:</b> <script type='text/javascript' src='//garrys-servers.ru/web/api-YOUR_SERVER_ID.js'></script>
+        <script type='text/javascript'>document.write(api.hostname);</script></p>
+        <p><b>Адрес сервера:</b> <script type='text/javascript'>document.write(api.ip + ':' + api.port);</script></p>
+        <p><b>Версия сервера:</b> <script type='text/javascript'>document.write(api.version);</script></p>
+        <p><b>Мод сервера:</b> <script type='text/javascript'>document.write(api.gamemode);</script></p>
+        <p><b>Текущий онлайн:</b> <script type='text/javascript'>document.write(api.players +' из '+ api.maxplayers);</script> игроков</p>
+        <p><b>Рекорд игроков:</b> <script type='text/javascript'>document.write(api.record);</script></p>
+        <p><b>Последнее обновление информации:</b> <script type='text/javascript'>document.write(api.lastconnect);</script></p>
+        <p><b>Статус сервера:</b> <script type='text/javascript'>
+          if (api.status == 1) {
+            document.write("<font style='color: green;'>Работает</font>");
+          } else {
+            document.write("<font style='color: red;'>Сервер недоступен</font>");
+          }
+        </script></p>
+        <p><b>Рейтинг сервера:</b> <script type='text/javascript'>document.write(api.votes);</script></p>
+      </div>
+      <!-- Добавьте больше карточек серверов здесь -->
+    </section>
   </main>
 
   <footer>
