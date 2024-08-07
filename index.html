@@ -3,11 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>InterstellarGateway</title>
+  <title>Главная - InterstellarGateway</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="scripts/particles.min.js"></script>
-  <script type="module" src="scripts/index.js"></script>
-  <script type='text/javascript' src='//garrys-servers.ru/web/api-1532.js'></script>
+  <script type="module" src="scripts/index.js" defer></script>
 </head>
 <body>
   <div id="particles-js"></div>
@@ -26,12 +24,20 @@
   </header>
 
   <main>
-    <h1>Добро пожаловать в InterstellarGateway</h1>
-    <p>Сеть игровых серверов по Garry's Mod</p>
-    <button onclick="location.href='https://discord.gg/sn28ff4Zwq'">Подключиться к Discord серверу</button>
+    <h1>Добро пожаловать на InterstellarGateway</h1>
     <div class="server-list">
-      <!-- Dynamic server cards will be inserted here -->
+      <!-- Пример карточки сервера -->
+      <div class="server-card">
+        <h3>Сервер 1</h3>
+        <p>Описание сервера 1</p>
+      </div>
+      <div class="server-card">
+        <h3>Сервер 2</h3>
+        <p>Описание сервера 2</p>
+      </div>
+      <!-- Добавьте дополнительные карточки по необходимости -->
     </div>
+    <button id="add-server">Добавить сервер</button>
   </main>
 
   <footer>
@@ -40,29 +46,5 @@
   </footer>
   
   <script src="scripts/particles-config.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Предполагаем, что API возвращает массив объектов серверов
-      var servers = api.servers; // Это должно соответствовать структуре, возвращаемой вашим API
-
-      var serverListDiv = document.querySelector('.server-list');
-      servers.forEach(function(server) {
-          var serverCard = `
-              <div class="server-card">
-                  <h3>${server.name}</h3>
-                  <p>${server.description}</p>
-                  <b>Адрес сервера:</b> ${server.ip}:${server.port}<br/>
-                  <b>Версия сервера:</b> ${server.version}<br/>
-                  <b>Мод сервера:</b> ${server.gamemode}<br/>
-                  <b>Текущий онлайн:</b> ${server.players} из ${server.maxplayers} игроков<br/>
-                  <b>Рекорд игроков:</b> ${server.record}<br/>
-                  <b>Последнее обновление информации:</b> ${server.lastconnect}<br/>
-                  <b>Статус сервера:</b> ${server.status === 1 ? '<font style="color: green;">Работает</font><br />' : '<font style="color: red;">Сервер недоступен</font><br />'}
-                  <b>Рейтинг сервера:</b> ${server.votes}
-              </div>`;
-          serverListDiv.innerHTML += serverCard;
-      });
-    });
-  </script>
 </body>
 </html>
