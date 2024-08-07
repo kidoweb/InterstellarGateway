@@ -44,25 +44,4 @@ window.addEventListener('load', () => {
   // Call the function to update server data
   updateServerData();
 });
-document.addEventListener('DOMContentLoaded', function() {
-    // Assuming the API provides an array of servers
-    var servers = api.servers; // This should match the structure returned by your API
 
-    var serverListDiv = document.querySelector('.server-list');
-    servers.forEach(function(server) {
-        var serverCard = `
-            <div class="server-card">
-                <h3>${server.name}</h3>
-                <p>${server.description}</p>
-                <b>Адрес сервера:</b> ${server.ip}:${server.port}<br/>
-                <b>Версия сервера:</b> ${server.version}<br/>
-                <b>Мод сервера:</b> ${server.gamemode}<br/>
-                <b>Текущий онлайн:</b> ${server.players} из ${server.maxplayers} игроков<br/>
-                <b>Рекорд игроков:</b> ${server.record}<br/>
-                <b>Последнее обновление информации:</b> ${server.lastconnect}<br/>
-                <b>Статус сервера:</b> ${server.status === 1 ? '<font style="color: green;">Работает</font><br />' : '<font style="color: red;">Сервер недоступен</font><br />'}
-                <b>Рейтинг сервера:</b> ${server.votes}
-            </div>`;
-        serverListDiv.innerHTML += serverCard;
-    });
-});
