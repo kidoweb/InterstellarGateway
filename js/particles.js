@@ -1,9 +1,8 @@
-// js/particles.js
-
-particlesJS('particles-js', {
+// Загрузка библиотеки Particles.js
+particlesJS('particles-container', {
     "particles": {
         "number": {
-            "value": 50, // Уменьшить количество частиц
+            "value": 100,
             "density": {
                 "enable": true,
                 "value_area": 800
@@ -37,13 +36,13 @@ particlesJS('particles-js', {
             "random": true,
             "anim": {
                 "enable": false,
-                "speed": 40,
+                "speed": 4,
                 "size_min": 0.1,
                 "sync": false
             }
         },
         "line_linked": {
-            "enable": true,
+            "enable": false,
             "distance": 150,
             "color": "#ffffff",
             "opacity": 0.4,
@@ -51,7 +50,7 @@ particlesJS('particles-js', {
         },
         "move": {
             "enable": true,
-            "speed": 1, // Уменьшить скорость движения частиц
+            "speed": 1,
             "direction": "none",
             "random": false,
             "straight": false,
