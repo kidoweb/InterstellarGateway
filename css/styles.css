@@ -1,333 +1,156 @@
+/* Основные стили для сайта */
 body {
+    font-family: 'Arial', sans-serif;
     margin: 0;
-    font-family: Arial, sans-serif;
-    color: #FFFFFF;
-    background-color: #0d0d2b; /* Темный космический фон */
-    overflow: hidden;
+    padding: 0;
+    background: #000; /* Космический черный фон */
+    color: #fff;
 }
 
-.container {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    padding: 20px;
-}
-
-.logo {
-    width: 150px;
-    margin-top: 20px;
-}
-
-h1 {
-    font-size: 2.5em;
-    margin: 10px 0;
-    color: #FFFFFF;
-}
-
-.servers {
-    margin-top: 50px;
-}
-
-.server-card {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid #444;
-    padding: 20px;
-    margin: 20px auto;
-    width: 300px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-}
-
-.server-card h3 {
-    color: #FFD700;
-    margin-bottom: 10px;
-}
-
-.server-card p {
-    margin: 10px 0;
-}
-
-.server-card button {
-    padding: 10px 20px;
-    background-color: #FFD700;
-    color: #0d0d2b;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.server-card button:hover {
-    background-color: #ffcc00;
-}
-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #0d0d2b;
-    color: #FFFFFF;
-    text-align: center;
-    padding: 10px;
-    font-size: 0.9em;
-    border-top: 1px solid #444;
-}
-
-footer a {
-    color: #FFD700;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-/* Основные стили для логотипа */
-.logo {
-    max-width: 100%; /* Логотип не будет превышать ширину родительского контейнера */
-    height: auto; /* Высота будет автоматически рассчитываться для сохранения пропорций */
-    display: block; /* Убираем дополнительные отступы, которые могут быть у изображений */
-    margin: 0 auto; /* Центрирование логотипа */
-}
-/* Медиазапрос для уменьшения логотипа на мобильных устройствах */
-@media (max-width: 600px) {
-    .logo {
-        max-width: 150px; /* Устанавливаем максимальную ширину для мобильных устройств */
-    }
-}
-
-/* Медиазапрос для увеличения логотипа на десктопах */
-@media (min-width: 601px) {
-    .logo {
-        max-width: 300px; /* Устанавливаем максимальную ширину для десктопов */
-    }
-}
-/* Основные стили для header */
+/* Шапка сайта */
 header {
-    background-color: #000; /* Черный фон для космического стиля */
-    color: #fff; /* Белый текст */
-    padding: 10px;
-    text-align: center;
+    background: #111; /* Темный фон для шапки */
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
-.logo-container {
+.header-container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-bottom: 10px;
+    justify-content: space-between;
 }
 
 .logo {
-    max-width: 150px;
-    height: auto;
-    margin-right: 15px;
+    height: 50px;
 }
 
 nav ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
+    display: flex;
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 10px;
+    margin: 0 15px;
 }
 
-nav a {
-    color: #fff;
+nav ul li a {
     text-decoration: none;
+    color: #fff;
     font-weight: bold;
 }
 
-nav a:hover {
+nav ul li a:hover {
+    color: #0f0; /* Космический акцент */
+}
+
+/* Основной контент страницы */
+main {
+    margin-top: 80px; /* Отступ для шапки */
+    padding: 20px;
+}
+
+.auth-container, .profile-container, .admin-container, .discord-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7); /* Полупрозрачный фон для контента */
+    border-radius: 10px;
+}
+
+button {
+    background-color: #0f0; /* Космический акцент */
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0c0;
+}
+
+input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background: #222;
+    color: #fff;
+}
+
+input[type="email"]::placeholder, input[type="password"]::placeholder {
+    color: #aaa;
+}
+
+.password-container {
+    display: flex;
+    align-items: center;
+}
+
+#togglePassword {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: -30px; /* Сдвиг иконки влево */
+}
+
+/* Панель с правами */
+footer {
+    background: #111;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.footer-container p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.footer-container a {
+    color: #0f0;
+    text-decoration: none;
+}
+
+.footer-container a:hover {
     text-decoration: underline;
 }
 
-/* Общие стили для футера */
-footer {
-    background-color: #000;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-}
-/* Стили для страницы новостей */
-.news-item {
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin: 10px 0;
-}
-
-.comments {
-    margin-top: 10px;
-}
-
-#add-news-form {
-    margin-top: 20px;
-}
-
-#news-form input,
-#news-form textarea {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 8px;
-}
-
-#news-form button {
-    padding: 10px 20px;
-}
-/* Стили для административных кнопок и новостей */
-.admin-controls button {
-    margin-right: 10px;
-}
-
-.news-item {
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin: 10px 0;
-}
-
-.comments {
-    margin-top: 10px;
-}
-
-#add-news-form {
-    margin-top: 20px;
-}
-
-#news-form input,
-#news-form textarea {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 8px;
-}
-
-#news-form button {
-    padding: 10px 20px;
-}
-/* styles.css */
-
-/* Контейнер для партиклов */
-/* styles.css */
-#particles-js {
+/* Стили для страницы с партиклами */
+.particles-container {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Партиклы должны быть за основным контентом */
+    z-index: -1;
 }
 
-/* styles.css */
-
-/* Адаптивный дизайн */
-@media only screen and (max-width: 768px) {
-    .container {
-        padding: 10px;
-    }
-
-    .header, .footer {
-        text-align: center;
-    }
-
-    .news-item {
-        font-size: 14px;
-    }
-    
-    #news-form input,
-    #news-form textarea {
-        width: 100%;
-    }
-}
-/* styles.css */
-#content {
-    position: relative;
-    z-index: 1; /* Контент должен быть выше партиклов */
-}
-/* styles.css */
-
-/* Стили для секции серверов */
-#servers {
-    margin-top: 20px;
-}
-
-.server-item {
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    background-color: #111;
-    color: #fff;
-}
-
-.server-item h3 {
-    margin-top: 0;
-}
-
-.connect-button {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 10px;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-}
-
-.connect-button:hover {
-    background-color: #0056b3;
-}
-/* styles.css */
-
-/* Общие стили для кнопок */
 .discord-button {
     display: inline-block;
     padding: 10px 20px;
-    font-size: 16px;
+    background-color: #7289da; /* Discord цвет */
     color: #fff;
-    background-color: #7289da; /* Цвет Discord */
-    text-decoration: none;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    text-decoration: none;
+    font-size: 16px;
+    text-align: center;
 }
 
 .discord-button:hover {
-    background-color: #5b6eae; /* Темнее цвет при наведении */
-}
-.password-container {
-    position: relative;
-}
-
-.password-container input {
-    width: calc(100% - 40px); /* Учитываем размер кнопки */
-}
-
-.password-container button {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-    font-size: 16px;
-    color: #333;
-}
-.password-container {
-    position: relative;
-}
-
-.password-container input {
-    width: calc(100% - 40px); /* Учитываем размер кнопки */
-}
-
-.password-container button {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-    font-size: 16px;
-    color: #333;
+    background-color: #5b6eae;
 }
