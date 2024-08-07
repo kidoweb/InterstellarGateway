@@ -3,6 +3,7 @@
 // Инициализация Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 import { getDatabase, ref, onValue, set, push, remove } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 
 // Конфигурация Firebase
 const firebaseConfig = {
@@ -18,6 +19,25 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
+const auth = getAuth(app);
+
+let currentUser;
+
+// Функция проверки прав администратора
+function checkAdminRights() {
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            currentUser = user;
+            const userRef = ref(db, `users/${user.uid}`);
+            onValue(userRef, (snapshot) => {
+                const userData = snapshot.val();
+                if (userData && (userData.role === 'admin' || userData.role === 'moderator')) {
+                    document.getElementById('admin-controls').style.display = 'block';
+                }
+            });
+        }
+    });
+}
 
 // Функция загрузки новостей
 function loadNews() {
@@ -27,21 +47,36 @@ function loadNews() {
         newsList.innerHTML = '';
         snapshot.forEach((childSnapshot) => {
             const news = childSnapshot.val();
+            const newsId = childSnapshot.key;
             const newsItem = document.createElement('div');
             newsItem.classList.add('news-item');
             newsItem.innerHTML = `
                 <h3>${news.title}</h3>
                 <p>${news.content}</p>
-                <button onclick="likeNews('${childSnapshot.key}')">Лайк (${news.likes || 0})</button>
+                <button onclick="likeNews('${newsId}')">Лайк (${news.likes || 0})</button>
                 <div class="comments">
                     <h4>Комментарии</h4>
-                    <div id="comments-${childSnapshot.key}"></div>
-                    <input type="text" id="comment-input-${childSnapshot.key}" placeholder="Добавить комментарий">
-                    <button onclick="addComment('${childSnapshot.key}')">Отправить</button>
+                    <div id="comments-${newsId}"></div>
+                    <input type="text" id="comment-input-${newsId}" placeholder="Добавить комментарий">
+                    <button onclick="addComment('${newsId}')">Отправить</button>
+                </div>
+                <div id="admin-controls-${newsId}" style="display: none;">
+                    <button onclick="editNews('${newsId}')">Редактировать</button>
+                    <button onclick="deleteNews('${newsId}')">Удалить</button>
                 </div>
             `;
             newsList.appendChild(newsItem);
-            loadComments(childSnapshot.key);
+            loadComments(newsId);
+            // Показать административные кнопки, если у текущего пользователя есть права
+            if (currentUser) {
+                const userRef = ref(db, `users/${currentUser.uid}`);
+                onValue(userRef, (snapshot) => {
+                    const userData = snapshot.val();
+                    if (userData && (userData.role === 'admin' || userData.role === 'moderator')) {
+                        document.getElementById(`admin-controls-${newsId}`).style.display = 'block';
+                    }
+                });
+            }
         });
     });
 }
@@ -64,6 +99,22 @@ document.getElementById('news-form').addEventListener('submit', (e) => {
         console.error('Ошибка добавления новости:', error);
     });
 });
+
+// Функция редактирования новости
+function editNews(newsId) {
+    // Код для редактирования новости
+    // Можно отобразить форму с текущим содержимым новости и обновить данные в базе
+}
+
+// Функция удаления новости
+function deleteNews(newsId) {
+    const newsRef = ref(db, `news/${newsId}`);
+    remove(newsRef).then(() => {
+        document.getElementById(`news-${newsId}`).remove();
+    }).catch(error => {
+        console.error('Ошибка удаления новости:', error);
+    });
+}
 
 // Функция добавления комментария
 function addComment(newsId) {
@@ -104,16 +155,6 @@ function likeNews(newsId) {
         const newLikes = (news.likes || 0) + 1;
         set(newsRef, { ...news, likes: newLikes });
     });
-}
-
-// Проверка прав администратора (например, через Firebase Authentication)
-function checkAdminRights() {
-    // Примерный код для проверки прав администратора
-    // Здесь нужно интегрировать с Firebase Authentication для проверки прав
-    const isAdmin = true; // Или другая логика
-    if (isAdmin) {
-        document.getElementById('admin-controls').style.display = 'block';
-    }
 }
 
 // Инициализация страницы
