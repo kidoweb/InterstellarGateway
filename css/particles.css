@@ -1,9 +1,19 @@
-/* Стили для частиц */
-#particles-js {
+/* Стили для партиклов */
+.particles-container {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Помещает анимацию частиц на фон */
+    z-index: -1; /* Помещаем партиклы под основной контент */
+    pointer-events: none; /* Отключаем взаимодействие с партиклами */
+}
+
+/* Стили для анимации партиклов */
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0.8;
+    pointer-events: none;
 }
