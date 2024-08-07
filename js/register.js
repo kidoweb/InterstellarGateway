@@ -1,7 +1,8 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+// Инициализация Firebase Auth
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 
+// Конфигурация Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyBo6sm-D7KpWhnYkjZrhJnoIE0sNwpTVIc",
     authDomain: "interstellargateway-149ae.firebaseapp.com",
@@ -13,35 +14,35 @@ const firebaseConfig = {
     measurementId: "G-BEH8RS3YGB"
 };
 
+// Инициализация Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const database = getDatabase(app);
 
-document.getElementById('register-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
+// Обработчик регистрации
+document.getElementById('register-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    const username = document.getElementById('username').value;
 
-    try {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-
-        // Отправка письма с подтверждением почты
-        await sendEmailVerification(user);
-        alert('Письмо с подтверждением отправлено. Пожалуйста, проверьте свою почту.');
-
-        // Добавление данных пользователя в базу данных
-        await set(ref(database, 'users/' + user.uid), {
-            username: username,
-            email: email,
-            group: 'user', // Дефолтная группа пользователя
-            avatar: 'default-avatar.png'
+    createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Отправка письма для подтверждения электронной почты
+            sendEmailVerification(userCredential.user)
+                .then(() => {
+                    alert('Проверьте свою почту для подтверждения.');
+                    window.location.href = 'login.html'; // Перенаправление на страницу входа
+                });
+        })
+        .catch((error) => {
+            alert("Ошибка регистрации: " + error.message);
         });
+});
 
-        // Перенаправление пользователя на страницу профиля после регистрации
-        window.location.href = 'profile.html';
-    } catch (error) {
-        alert('Ошибка регистрации: ' + error.message);
-    }
+// Функция для предпросмотра пароля
+document.getElementById('togglePassword').addEventListener('click', function() {
+    const passwordField = document.getElementById('password');
+    const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordField.setAttribute('type', type);
+    this.classList.toggle('fa-eye');
 });
