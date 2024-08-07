@@ -4,50 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interstellar Gateway</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/particles.css">
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Партиклы на фоне -->
+    <!-- Контейнер для партиклов -->
     <div id="particles-js"></div>
-    
-    <!-- Контент главной страницы -->
-    <div class="container">
+
+    <!-- Основной контент -->
+    <div id="content">
         <header>
-            <img src="images/logo1.png" alt="Interstellar Gateway Logo" class="logo">
-            <h1>Interstellar Gateway</h1>
+            <!-- Логотип и навигация -->
+            <img src="logo.png" alt="Interstellar Gateway Logo" id="logo">
+            <nav>
+                <a href="index.html">Главная</a>
+                <a href="news.html">Новости</a>
+                <a href="profile.html">Профиль</a>
+                <a href="discord.html">Discord</a>
+            </nav>
         </header>
 
-        <section class="servers">
-            <h2>Наши Серверы</h2>
-            <div class="server-card">
-                <h3>IG | Galactic Conflict</h3>
-                <p>IP: 46.174.50.56:27015</p>
-                <button onclick="connectToServer('46.174.50.56:27015')">Подключиться</button>
-            </div>
-        </section>
+        <main>
+            <!-- Контент главной страницы -->
+            <h1>Добро пожаловать в Interstellar Gateway</h1>
+            <p>Здесь вы найдете все о наших серверах.</p>
+        </main>
+        
+        <!-- Панель внизу страницы -->
+        <footer>
+            <p>@Interstellar Gateway Все права защищены.</p>
+            <a href="privacy-policy.html">Политика конфиденциальности</a>
+        </footer>
     </div>
 
-    <!-- Панель внизу страницы -->
-    <footer>
-    <p>@Interstellar Gateway Все права защищены. <a href="privacy.html">Политика конфиденциальности</a></p>
-</footer>
-
-
     <!-- Скрипты -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="js/particles.js"></script>
-    <script src="js/main.js"></script>
-    <!-- Подключаем header.html -->
-<div id="header-container"></div>
-
-<script>
-    fetch('header.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('header-container').innerHTML = data;
-        });
-</script>
-
 </body>
 </html>
