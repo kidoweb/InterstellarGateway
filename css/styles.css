@@ -1,45 +1,51 @@
-/* Общие стили для всего сайта */
+/* Общие стили */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background: #000; /* Черный фон для космического стиля */
     color: #fff;
+    background-color: #000;
 }
 
-header, footer {
-    background: #111; /* Темно-серый фон для шапки и подвала */
-    padding: 10px;
-    text-align: center;
+header {
+    background: #111;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
 }
 
 header img {
-    max-width: 150px;
-    height: auto;
+    height: 40px;
 }
 
-nav {
-    margin-top: 10px;
+header nav {
+    display: flex;
 }
 
-nav a {
+header nav a {
     color: #fff;
     text-decoration: none;
-    padding: 10px;
-    font-size: 16px;
+    margin: 0 10px;
 }
 
-nav a:hover {
-    background: #333; /* Цвет фона при наведении на ссылки */
-    border-radius: 5px;
+header nav a:hover {
+    text-decoration: underline;
 }
 
 footer {
-    font-size: 14px;
+    background: #111;
+    padding: 10px 20px;
+    text-align: center;
+    border-top: 1px solid #333;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 footer a {
-    color: #0f0; /* Цвет для ссылок в подвале */
+    color: #fff;
     text-decoration: none;
 }
 
@@ -47,22 +53,19 @@ footer a:hover {
     text-decoration: underline;
 }
 
-.container {
-    width: 80%;
+/* Общие стили для форм */
+form {
+    max-width: 600px;
     margin: 0 auto;
     padding: 20px;
-}
-
-form {
     background: #222;
-    padding: 20px;
     border-radius: 8px;
 }
 
 form input, form button {
     display: block;
     width: 100%;
-    margin-bottom: 10px;
+    margin: 10px 0;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #444;
@@ -79,23 +82,34 @@ form input[type="submit"]:hover, form button:hover {
     background: #555;
 }
 
-/* Стиль для иконки глаза для предпросмотра пароля */
-.fa-eye {
-    cursor: pointer;
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-/* Специфические стили для админ-панели */
-#admin-panel {
-    display: none;
-    background: #222;
+/* Стили для главной страницы и новостей */
+#main-content {
     padding: 20px;
-    border-radius: 8px;
 }
 
-#admin-panel form {
-    margin-bottom: 20px;
+.news-item {
+    background: #222;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.news-item h3 {
+    margin: 0;
+}
+
+.news-item p {
+    margin: 5px 0;
+}
+
+.news-item button {
+    background: #c00;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.news-item button:hover {
+    background: #a00;
 }
