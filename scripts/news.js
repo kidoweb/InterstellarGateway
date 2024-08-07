@@ -65,7 +65,9 @@ function createNewsCard(newsItem, newsId, isAdmin) {
     <h3>${newsItem.title}</h3>
     <p>${newsItem.content}</p>
     <p><small>${new Date(newsItem.timestamp).toLocaleString()}</small></p>
-    <div class="comments-container" id="comments-${newsId}"></div>
+    <div class="comments-container" id="comments-${newsId}">
+      ${newsItem.comments ? Object.keys(newsItem.comments).map(commentId => createComment(newsItem.comments[commentId])).join('') : ''}
+    </div>
     <textarea placeholder="Оставьте комментарий"></textarea>
     <button onclick="addComment('${newsId}')">Отправить</button>
   `;
@@ -80,6 +82,14 @@ function createNewsCard(newsItem, newsId, isAdmin) {
   newsContainer.appendChild(card);
 }
 
+function createComment(comment) {
+  return `
+    <div class="comment">
+      <p><a href="profile.html?user=${comment.userId}">${comment.userId}</a>: ${comment.text}</p>
+      <p><small>${new Date(comment.timestamp).toLocaleString()}</small></p>
+    </div>
+  `;
+}
 function deleteNews(newsId) {
   remove(ref(db, 'news/' + newsId)).then(() => {
     window.location.reload();
