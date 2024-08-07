@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Главная - InterstellarGateway</title>
   <link rel="stylesheet" href="styles.css">
-  <script type="module" src="scripts/index.js" defer></script>
+  <!-- Подключаем скрипты -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js"></script>
+  <script src="scripts/index.js"></script>
+  <script src="scripts/particles-config.js"></script>
 </head>
 <body>
   <div id="particles-js"></div>
@@ -16,7 +21,6 @@
         <li><a href="news.html">Новости</a></li>
         <li><a href="blog.html">Блог</a></li>
         <li><a href="faq.html">FAQ</a></li>
-        <li><a href="profile.html">Профиль</a></li>
         <li id="login-link"><a href="login.html">Войти</a></li>
         <li><a href="search.html">Поиск</a></li>
       </ul>
@@ -25,26 +29,16 @@
 
   <main>
     <h1>Добро пожаловать на InterstellarGateway</h1>
-    <div class="server-list">
-      <!-- Пример карточки сервера -->
-      <div class="server-card">
-        <h3>Сервер 1</h3>
-        <p>Описание сервера 1</p>
-      </div>
-      <div class="server-card">
-        <h3>Сервер 2</h3>
-        <p>Описание сервера 2</p>
-      </div>
-      <!-- Добавьте дополнительные карточки по необходимости -->
-    </div>
-    <button id="add-server">Добавить сервер</button>
+    <!-- Здесь может быть контент главной страницы -->
   </main>
 
   <footer>
     <p>Copyright © 2024 InterstellarGateway.</p>
     <p><a href="privacy.html">Политика конфиденциальности</a></p>
   </footer>
-  
+
+  <!-- Подключаем скрипт для инициализации particle animations -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script src="scripts/particles-config.js"></script>
 </body>
 </html>
