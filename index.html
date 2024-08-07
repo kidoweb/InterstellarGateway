@@ -1,53 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interstellar Gateway</title>
+    <title>Interstellar Gateway - Главная</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script type="module" src="js/include-header.js" defer></script>
-
+    <link rel="stylesheet" href="css/particles.css">
+    <script src="js/particles.js" defer></script>
+    <script src="js/main.js" defer></script>
 </head>
 <body>
-    <!-- Контейнер для партиклов -->
-    <div id="particles-js"></div>
-
-    <!-- Основной контент -->
-    <div id="content">
-        <header>
-            <!-- Логотип и навигация -->
-            <img src="logo.png" alt="Interstellar Gateway Logo" id="logo">
+    <!-- Шапка сайта -->
+    <header>
+        <div class="header-container">
+            <img src="img/logo.png" alt="Логотип" class="logo">
             <nav>
-                <a href="index.html">Главная</a>
-                <a href="news.html">Новости</a>
-                <a href="profile.html">Профиль</a>
-                <a href="discord.html">Discord</a>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="news.html">Новости</a></li>
+                    <li><a href="login.html">Вход</a></li>
+                    <li><a href="discord.html">Discord</a></li>
+                </ul>
             </nav>
-        </header>
+        </div>
+    </header>
 
-        <main>
-            <h1>Добро пожаловать в Interstellar Gateway</h1>
-            <p>Здесь вы найдете все о наших серверах.</p>
-
-            <!-- Секция серверов -->
-            <section id="servers">
-                <h2>Наши сервера</h2>
-                <div id="server-list">
-                    <!-- Здесь будет список серверов -->
+    <!-- Основной контент страницы -->
+    <main>
+        <div class="server-info">
+            <h1>Серверы</h1>
+            <div class="server-list">
+                <div class="server-item">
+                    <h2>IG|Galactic Conflict</h2>
+                    <p>IP: 46.174.50.56:27015</p>
+                    <button onclick="connectToServer()">Подключиться</button>
                 </div>
-            </section>
-        </main>
-        
-        <!-- Панель внизу страницы -->
-        <footer>
-            <p>@Interstellar Gateway Все права защищены.</p>
-            <a href="privacy-policy.html">Политика конфиденциальности</a>
-        </footer>
-    </div>
+            </div>
+        </div>
+    </main>
 
-    <!-- Скрипты -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script src="js/particles.js"></script>
-    <script src="js/servers.js"></script> <!-- Скрипт для серверов -->
+    <!-- Панель с правами -->
+    <footer>
+        <div class="footer-container">
+            <p>&copy; Interstellar Gateway Все права защищены.</p>
+            <a href="privacy.html">Политика конфиденциальности</a>
+        </div>
+    </footer>
+
+    <!-- Скрипт для подключения к серверу через Steam -->
+    <script>
+        function connectToServer() {
+            // Замените ссылку на реальный метод подключения через Steam
+            window.location.href = 'steam://connect/46.174.50.56:27015';
+        }
+    </script>
 </body>
 </html>
