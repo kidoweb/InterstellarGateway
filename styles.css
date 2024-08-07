@@ -163,3 +163,17 @@ footer p {
   box-shadow: 0 0 50px #44C1EB, 0 0 50px #44C1EB inset;
   color: #44C1EB;
 }
+.site-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa; /* Пример цвета фона */
+    padding: 10px 20px; /* Пример отступов */
+}
+
+.site-footer p {
+    margin: 0; /* Убираем стандартные отступы вокруг параграфов */
+}
