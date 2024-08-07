@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #FFFFFF;
+    background-color: #0d0d2b; /* Темный космический фон */
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 20px;
+}
+
+.logo {
+    width: 150px;
+    margin-top: 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin: 10px 0;
+    color: #FFFFFF;
+}
+
+.servers {
+    margin-top: 50px;
+}
+
+.server-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #444;
+    padding: 20px;
+    margin: 20px auto;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.server-card h3 {
+    color: #FFD700;
+    margin-bottom: 10px;
+}
+
+.server-card p {
+    margin: 10px 0;
+}
+
+.server-card button {
+    padding: 10px 20px;
+    background-color: #FFD700;
+    color: #0d0d2b;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.server-card button:hover {
+    background-color: #ffcc00;
+}
