@@ -8,7 +8,6 @@
   <script src="scripts/particles.min.js"></script>
   <script type="module" src="scripts/index.js"></script>
   <script type='text/javascript' src='//garrys-servers.ru/web/api-1532.js'></script>
-
 </head>
 <body>
   <div id="particles-js"></div>
@@ -26,20 +25,44 @@
     </nav>
   </header>
 
- <main>
+  <main>
     <h1>Добро пожаловать в InterstellarGateway</h1>
     <p>Сеть игровых серверов по Garry's Mod</p>
     <button onclick="location.href='https://discord.gg/sn28ff4Zwq'">Подключиться к Discord серверу</button>
     <div class="server-list">
       <!-- Dynamic server cards will be inserted here -->
     </div>
-</main>
-
+  </main>
 
   <footer>
     <p>Copyright © 2024 InterstellarGateway.</p>
     <p><a href="privacy.html">Политика конфиденциальности</a></p>
   </footer>
+  
   <script src="scripts/particles-config.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Предполагаем, что API возвращает массив объектов серверов
+      var servers = api.servers; // Это должно соответствовать структуре, возвращаемой вашим API
+
+      var serverListDiv = document.querySelector('.server-list');
+      servers.forEach(function(server) {
+          var serverCard = `
+              <div class="server-card">
+                  <h3>${server.name}</h3>
+                  <p>${server.description}</p>
+                  <b>Адрес сервера:</b> ${server.ip}:${server.port}<br/>
+                  <b>Версия сервера:</b> ${server.version}<br/>
+                  <b>Мод сервера:</b> ${server.gamemode}<br/>
+                  <b>Текущий онлайн:</b> ${server.players} из ${server.maxplayers} игроков<br/>
+                  <b>Рекорд игроков:</b> ${server.record}<br/>
+                  <b>Последнее обновление информации:</b> ${server.lastconnect}<br/>
+                  <b>Статус сервера:</b> ${server.status === 1 ? '<font style="color: green;">Работает</font><br />' : '<font style="color: red;">Сервер недоступен</font><br />'}
+                  <b>Рейтинг сервера:</b> ${server.votes}
+              </div>`;
+          serverListDiv.innerHTML += serverCard;
+      });
+    });
+  </script>
 </body>
 </html>
