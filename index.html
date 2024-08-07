@@ -1,44 +1,28 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Главная - InterstellarGateway</title>
-  <link rel="stylesheet" href="styles.css">
-  <!-- Подключаем скрипты -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js"></script>
-  <script src="scripts/index.js"></script>
-  <script src="scripts/particles-config.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InterstellarGateway</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="particles-js"></div>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index.html">Главная</a></li>
-        <li><a href="news.html">Новости</a></li>
-        <li><a href="blog.html">Блог</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li id="login-link"><a href="login.html">Войти</a></li>
-        <li><a href="search.html">Поиск</a></li>
-      </ul>
-    </nav>
-  </header>
+    <!-- Включение header -->
+    <div id="header"></div>
+    
+    <!-- Основной контент -->
+    <main>
+        <h1>Добро пожаловать на InterstellarGateway</h1>
+        <p>Здесь вы найдете информацию о наших игровых серверах Garry's Mod.</p>
+    </main>
+    
+    <!-- Включение footer -->
+    <div id="footer"></div>
 
-  <main>
-    <h1>Добро пожаловать на InterstellarGateway</h1>
-    <!-- Здесь может быть контент главной страницы -->
-  </main>
-
-  <footer>
-    <p>Copyright © 2024 InterstellarGateway.</p>
-    <p><a href="privacy.html">Политика конфиденциальности</a></p>
-  </footer>
-
-  <!-- Подключаем скрипт для инициализации particle animations -->
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script src="scripts/particles-config.js"></script>
+    <script>
+        // Включение header и footer
+        document.getElementById('header').innerHTML = '<object type="text/html" data="header.html"></object>';
+        document.getElementById('footer').innerHTML = '<object type="text/html" data="footer.html"></object>';
+    </script>
 </body>
 </html>
