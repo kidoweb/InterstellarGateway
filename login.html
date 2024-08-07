@@ -21,13 +21,20 @@
 
   <main>
     <h1>Войти</h1>
-    <form id="login-form">
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-      <label for="password">Пароль:</label>
-      <input type="password" id="password" name="password" required>
-      <button type="submit">Войти</button>
-      <p>Забыли пароль? <a href="#">Восстановить</a></p>
+    <form id="login-form" class="form-container">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" name="password" required>
+        <span class="password-toggle">&#9776;</span>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="form-button">Войти</button>
+      </div>
+      <p>Забыли пароль? <a href="#" class="recover-password">Восстановить</a></p>
       <p>Нету аккаунта? <a href="register.html">Регистрация</a></p>
     </form>
   </main>
