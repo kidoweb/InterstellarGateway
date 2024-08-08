@@ -1,36 +1,36 @@
-html{
-   background: #808080;
+html {
+    background: #808080;
 }
-#particles-js{
-  position: fixed;
-  z-index: 1;
-  left:0;
-  top:0;
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(90deg,#F24645  ,#4F00BC );
+
+#particles-js {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(90deg, #F24645, #4F00BC);
 }
-.count-particles{
-  box-sizing: border-box;
-  position: relative;
-  width: 200px;
-  height: 100px;
-  background-color: white;
-  z-index: 2;
-  margin: 50px auto;
-  text-align:center;
-  font-size: 29px;
-  background: linear-gradient(90deg,#808080  ,#E6E6E6 );
-  border-radius:10px;
-  padding: 31px;
-  color:green;
-  box-shadow:0 0 30px #fff,
-    0 0 50px #fff inset;
-  cursor: pointer;
-  &:hover{
-    box-shadow:0 0 50px #44C1EB,
-      0 0 50px #44C1EB inset;
-    color:#44C1EB;
-  }
-  
+
+.count-particles {
+    box-sizing: border-box;
+    position: relative;
+    width: 200px;
+    height: 100px;
+    background-color: white;
+    z-index: 2;
+    margin: 50px auto;
+    text-align: center;
+    font-size: 29px;
+    background: linear-gradient(90deg, #808080, #E6E6E6);
+    border-radius: 10px;
+    padding: 31px;
+    color: green;
+    box-shadow: 0 0 30px #fff, 0 0 50px #fff inset;
+    cursor: pointer;
+}
+
+.count-particles:hover {
+    box-shadow: 0 0 50px #44C1EB, 0 0 50px #44C1EB inset;
+    color: #44C1EB;
 }
