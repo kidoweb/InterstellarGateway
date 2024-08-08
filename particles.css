@@ -1,7 +1,4 @@
-html {
-    background: #808080;
-}
-
+/* Стили для элемента частиц */
 #particles-js {
     position: fixed;
     z-index: 1;
@@ -13,6 +10,7 @@ html {
     background-size: cover; /* Покрытие всего элемента */
 }
 
+/* Стили для счётчика частиц */
 .count-particles {
     box-sizing: border-box;
     position: relative;
