@@ -1,21 +1,20 @@
 /* Общие стили для body */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    color: #eaeaea;
+    color: #ffffff; /* Белый цвет текста */
     margin: 0;
     padding: 0;
-    background: url('images/background.jpg') no-repeat center center fixed; /* Фон из privacy.html */
-    background-size: cover; /* Покрытие всего элемента */
+    background: radial-gradient(circle at center, #000022, #001b33) repeat-x; /* Космический фон */
 }
 
 /* Стили для шапки сайта */
 header {
-    background-color: rgba(0, 31, 63, 0.8); /* Полупрозрачный темно-синий фон */
-    color: #eaeaea;
-    padding: 20px 0;
+    background-color: rgba(0, 0, 0, 0.8); /* Темный фон шапки */
+    color: #ffffff;
+    padding: 10px 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: start; /* Элементы начало шапки */
     align-items: center;
     position: fixed;
     top: 0;
@@ -25,13 +24,14 @@ header {
 }
 
 .logo img {
-    height: 50px;
+    height: 40px; /* Размер логотипа */
     margin-right: 10px;
 }
 
 .logo span {
-    font-size: 24px;
+    font-size: 22px; /* Размер текста названия сайта */
     font-weight: bold;
+    color: #ffffff;
 }
 
 nav ul {
@@ -44,20 +44,20 @@ nav ul {
 
 nav ul li a {
     text-decoration: none;
-    color: #eaeaea;
+    color: #ffffff;
     font-size: 16px;
     transition: color 0.3s, border-bottom 0.3s;
 }
 
 nav ul li a:hover {
-    color: #00bfff; /* Светло-синий цвет при наведении */
-    border-bottom: 2px solid #00bfff; /* Подчеркивание при наведении */
+    color: #ffccbc; /* Желтый цвет при наведении */
+    border-bottom: 2px solid #ffccbc;
 }
 
 /* Стили для футера */
 footer {
-    background-color: rgba(0, 31, 63, 0.8); /* Полупрозрачный темно-синий фон */
-    color: #eaeaea;
+    background-color: rgba(0, 0, 0, 0.8); /* Темный фон подвала */
+    color: #ffffff;
     padding: 10px;
     text-align: center;
     position: fixed;
@@ -66,55 +66,51 @@ footer {
     left: 0;
     right: 0;
     z-index: 50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .footer-content span {
-    display: block;
-    margin-bottom: 10px;
+    display: inline-block;
+    margin: 0 10px;
+    color: #ffccbc; /* Желтый цвет звездочек */
 }
 
 .footer-content a {
-    color: #00bfff; /* Светло-синий цвет ссылки */
+    color: #ffccbc;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .footer-content a:hover {
-    color: #1e90ff; /* Ярко-синий цвет при наведении */
+    color: #ffd700; /* Золотистый цвет при наведении */
 }
 
-/* Стили для основной части политики конфиденциальности */
-.policy-card {
-    max-width: 800px;
-    margin: 100px auto;
-    background-color: rgba(0, 31, 63, 0.9); /* Полупрозрачный темно-синий фон карточки */
-    color: #eaeaea;
+/* Стили для основной части сайта */
+.main-content {
     padding: 20px;
+    max-width: 800px;
+    margin: 60px auto;
+    background-color: rgba(0, 0, 0, 0.9); /* Темный фон для контента */
+    color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
-.policy-card h1, .policy-card h2 {
-    color: #00bfff; /* Светло-синий цвет заголовков */
+.main-content h1, .main-content h2 {
+    color: #ffccbc;
 }
 
-.policy-card h2 {
-    margin-top: 20px;
-    border-bottom: 2px solid #00bfff; /* Подчеркивание под заголовками */
-    padding-bottom: 10px;
-}
-
-.policy-card ul {
-    margin: 10px 0;
-    padding-left: 20px;
-}
-
-.policy-card p {
+.main-content p {
     margin-bottom: 20px;
 }
