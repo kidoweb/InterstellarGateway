@@ -39,12 +39,11 @@ header nav ul li a {
     text-decoration: none;
     padding: 5px 10px;
     border-radius: 3px;
-    transition: background-color 0.3s, transform 0.3s; /* Добавлена анимация трансформации */
+    transition: background-color 0.3s;
 }
 
 header nav ul li a:hover {
     background-color: #555;
-    transform: scale(1.05); /* Увеличение размера при наведении */
 }
 
 footer {
@@ -67,7 +66,36 @@ footer .footer-content a:hover {
     text-decoration: underline;
 }
 
-/* Плавная прокрутка к якорям */
-html {
-    scroll-behavior: smooth;
+/* Стили для карточки */
+.card {
+  width: 400px; /* Ширина карточки */
+  margin: 50px auto; /* Центрирование и отступы */
+  background-color: #333; /* Темный фон карточки */
+  color: #fff; /* Цвет текста */
+  padding: 20px;
+  border-radius: 10px; /* Скругленные углы */
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); /* Световой эффект */
+}
+
+.card h2 {
+  margin-top: 0; /* Убираем верхний отступ у заголовка */
+  color: #ffd700; /* Золотой цвет для заголовка */
+}
+
+/* Стили для изображения */
+.card img {
+  width: 100%; /* Изображение занимает всю ширину карточки */
+  height: auto; /* Высота подстраивается автоматически */
+  margin: 20px 0; /* Отступы вокруг изображения */
+}
+
+/* Стили для кнопки подключения */
+.connect-button a {
+  display: inline-block; /* Блочный элемент */
+  background-color: #007bff; /* Цвет фона кнопки */
+  color: white; /* Цвет текста на кнопке */
+  padding: 10px 20px; /* Поля вокруг текста кнопки */
+  text-decoration: none; /* Убираем подчеркивание ссылки */
+  margin-top: 20px; /* Отступ сверху от кнопки */
+  border-radius: 5px; /* Скругленные углы кнопки */
 }
