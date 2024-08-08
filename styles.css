@@ -1,17 +1,18 @@
 body {
-    font-family: 'Orbitron', sans-serif; /* Используем шрифт в стиле космоса */
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: #000 url('path/to/stars-background.jpg') repeat; /* Фон с изображением звезд */
 }
 
 header {
-    background-color: rgba(10, 20, 30, 0.9); /* Полупрозрачный темно-синий фон */
-    color: #00ff00; /* Неоновый зеленый цвет текста */
+    background-color: #333;
+    color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 10px 20px;
+    z-index: 2; /* Обеспечение наложения поверх частиц */
+    position: relative; /* Положение относительно для z-index */
 }
 
 header .logo {
@@ -20,8 +21,8 @@ header .logo {
 }
 
 header .logo img {
-    height: 60px; /* Увеличиваем размер логотипа */
-    margin-right: 20px;
+    height: 40px;
+    margin-right: 10px;
 }
 
 header nav ul {
@@ -32,35 +33,37 @@ header nav ul {
 }
 
 header nav ul li {
-    margin: 0 20px;
+    margin: 0 10px;
 }
 
 header nav ul li a {
-    color: #00ff00; /* Неоновый зеленый цвет ссылок */
+    color: #fff;
     text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 5px 10px;
+    border-radius: 3px;
     transition: background-color 0.3s;
 }
 
 header nav ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный белый фон при наведении */
+    background-color: #555;
 }
 
 footer {
-    background-color: rgba(10, 20, 30, 0.9); /* Полупрозрачный темно-синий фон */
-    color: #00ff00; /* Неоновый зеленый цвет текста */
+    background-color: #333;
+    color: #fff;
     text-align: center;
-    padding: 20px 0;
+    padding: 10px 0;
     position: absolute;
     width: 100%;
     bottom: 0;
+    z-index: 2; /* Обеспечение наложения поверх частиц */
+    position: relative; /* Положение относительно для z-index */
 }
 
 footer .footer-content a {
-    color: #00ff00; /* Неоновый зеленый цвет ссылок */
+    color: #fff;
     text-decoration: none;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 footer .footer-content a:hover {
@@ -69,13 +72,15 @@ footer .footer-content a:hover {
 
 /* Стили для карточки */
 .card {
-  width: 500px; /* Увеличиваем ширину карточки */
-  margin: 100px auto; /* Увеличиваем отступы для центрирования */
-  background-color: rgba(10, 20, 30, 0.9); /* Полупрозрачный темно-синий фон карточки */
-  color: #00ff00; /* Неоновый зеленый цвет текста */
-  padding: 40px;
-  border-radius: 20px; /* Увеличиваем радиус скругления углов */
-  box-shadow: 0 0 40px rgba(255, 255, 255, 0.2); /* Усиливаем световой эффект */
+  width: 400px; /* Ширина карточки */
+  margin: 50px auto; /* Центрирование и отступы */
+  background-color: #333; /* Темный фон карточки */
+  color: #fff; /* Цвет текста */
+  padding: 20px;
+  border-radius: 10px; /* Скругленные углы */
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); /* Световой эффект */
+  z-index: 2; /* Обеспечение наложения поверх частиц */
+  position: relative; /* Положение относительно для z-index */
 }
 
 .card h2 {
@@ -87,7 +92,7 @@ footer .footer-content a:hover {
 .card img {
   width: 100%; /* Изображение занимает всю ширину карточки */
   height: auto; /* Высота подстраивается автоматически */
-  margin: 40px 0; /* Увеличиваем отступы вокруг изображения */
+  margin: 20px 0; /* Отступы вокруг изображения */
 }
 
 /* Стили для кнопки подключения */
@@ -95,8 +100,45 @@ footer .footer-content a:hover {
   display: inline-block; /* Блочный элемент */
   background-color: #007bff; /* Цвет фона кнопки */
   color: white; /* Цвет текста на кнопке */
-  padding: 20px 40px; /* Увеличиваем поля вокруг текста кнопки */
+  padding: 10px 20px; /* Поля вокруг текста кнопки */
   text-decoration: none; /* Убираем подчеркивание ссылки */
-  margin-top: 40px; /* Увеличиваем отступ сверху от кнопки */
-  border-radius: 10px; /* Увеличиваем радиус скругления углов кнопки */
+  margin-top: 20px; /* Отступ сверху от кнопки */
+  border-radius: 5px; /* Скругленные углы кнопки */
+}
+
+/* Стили для фона и частиц */
+html {
+   background: #808080;
+}
+#particles-js {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(90deg, #F24645, #4F00BC);
+}
+.count-particles {
+  box-sizing: border-box;
+  position: relative;
+  width: 200px;
+  height: 100px;
+  background-color: white;
+  z-index: 2;
+  margin: 50px auto;
+  text-align: center;
+  font-size: 29px;
+  background: linear-gradient(90deg, #808080, #E6E6E6);
+  border-radius: 10px;
+  padding: 31px;
+  color: green;
+  box-shadow: 0 0 30px #fff,
+    0 0 50px #fff inset;
+  cursor: pointer;
+}
+.count-particles:hover {
+  box-shadow: 0 0 50px #44C1EB,
+    0 0 50px #44C1EB inset;
+  color: #44C1EB;
 }
