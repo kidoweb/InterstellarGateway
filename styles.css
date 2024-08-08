@@ -1,113 +1,50 @@
 /* Основные стили сайта */
 
-/* Переменные для цвета и других значений */
-:root {
-    --primary-bg: #333;
-    --secondary-text: #fff;
-    --accent-color: #ffd700;
-    --button-bg: #007bff;
-    --button-hover-color: #0056b3;
-    --card-border-radius: 15px;
-    --shadow-depth: 30px;
-}
-
-/* Стили для шапки */
-header {
-    background: var(--primary-bg);
-    color: var(--secondary-text);
-    padding: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-header img {
-    height: 70px;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 2.5rem;
-}
-
-/* Стили для навигации */
-nav {
-    display: flex;
-}
-
-nav a {
-    color: var(--secondary-text);
-    text-decoration: none;
-    padding: 0 20px;
-    font-size: 1.2rem;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
-
-/* Стили для подвала */
-footer {
-    background: var(--primary-bg);
-    color: var(--secondary-text);
-    text-align: center;
-    padding: 15px;
-}
-
-footer a {
-    color: var(--accent-color);
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
 /* Стили для основной части */
 main {
-    padding: 30px;
+    padding: 30px; /* Увеличение внутреннего отступа */
+    background: linear-gradient(to right, #000022, #02073d); /* Градиентный фон для основной части */
 }
 
 .card {
-    width: 500px;
+    width: 500px; /* Увеличение ширины карточки */
     margin: 50px auto;
-    background-color: var(--primary-bg);
-    color: var(--secondary-text);
-    padding: 30px;
-    border-radius: var(--card-border-radius);
-    box-shadow: 0 0 var(--shadow-depth) rgba(255, 255, 255, 0.2);
-    transition: transform 0.3s ease; /* Плавное изменение размера карточки */
+    background-color: #121212; /* Темный фон карточки */
+    color: #eaeaea; /* Светлый текст для контраста */
+    padding: 30px; /* Увеличение внутреннего отступа */
+    border-radius: 15px; /* Увеличение радиуса скругления углов */
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2); /* Увеличение тени */
+    backdrop-filter: blur(10px); /* Эффект размытия для создания эффекта космоса */
 }
 
 .card h2 {
     margin-top: 0;
-    color: var(--accent-color);
-    font-size: 2rem;
+    color: #ffd700; /* Желтый цвет для акцентирования внимания */
+    font-size: 2rem; /* Увеличение размера шрифта заголовка карточки */
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5); /* Тень для заголовка */
 }
 
 .card img {
     width: 100%;
     height: auto;
     margin: 20px 0;
+    filter: brightness(75%); /* Уменьшение яркости изображения для создания эффекта космоса */
 }
 
 .connect-button a {
     display: inline-block;
-    background-color: var(--button-bg);
+    background-color: #007bff;
     color: white;
-    padding: 15px 30px;
+    padding: 15px 30px; /* Увеличение внутренних отступов */
     text-decoration: none;
     margin-top: 20px;
-    border-radius: 7px;
-    font-size: 1.2rem;
-    transition: background-color 0.3s ease; /* Плавное изменение цвета фона кнопки */
+    border-radius: 7px; /* Увеличение радиуса скругления углов кнопки */
+    font-size: 1.2rem; /* Увеличение размера шрифта кнопки */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Тень для кнопки */
+    transition: all 0.3s ease; /* Плавная анимация переходов */
 }
 
 .connect-button a:hover {
-    background-color: var(--button-hover-color);
-}
-
-/* Анимация увеличения размера карточки при наведении */
-.card:hover {
-    transform: scale(1.05); /* Увеличиваем размер карточки на 5% */
+    background-color: #0056b3; /* Темнее синий цвет при наведении */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Увеличение тени при наведении */
 }
