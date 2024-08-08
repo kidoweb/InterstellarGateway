@@ -1,118 +1,113 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #000033; /* Черный фон с космическим синим оттенком */
-    color: #ffffff; /* Белый цвет текста для контраста */
+/* Основные стили сайта */
+
+/* Переменные для цвета и других значений */
+:root {
+    --primary-bg: #333;
+    --secondary-text: #fff;
+    --accent-color: #ffd700;
+    --button-bg: #007bff;
+    --button-hover-color: #0056b3;
+    --card-border-radius: 15px;
+    --shadow-depth: 30px;
 }
 
+/* Стили для шапки */
 header {
-    background-color: #000055; /* Темно-синий фон для шапки */
-    color: #ffffff; /* Белый цвет текста */
+    background: var(--primary-bg);
+    color: var(--secondary-text);
+    padding: 30px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    z-index: 2;
-    position: relative;
 }
 
-header .logo {
-    display: flex;
-    align-items: center;
+header img {
+    height: 70px;
 }
 
-header .logo img {
-    height: 40px;
-    filter: brightness(80%); /* Уменьшаем яркость логотипа для соответствия теме */
-}
-
-header nav ul {
-    list-style-type: none;
+header h1 {
     margin: 0;
-    padding: 0;
+    font-size: 2.5rem;
+}
+
+/* Стили для навигации */
+nav {
     display: flex;
 }
 
-header nav ul li {
-    margin: 0 10px;
-}
-
-header nav ul li a {
-    color: #ffffff;
+nav a {
+    color: var(--secondary-text);
     text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 3px;
-    transition: background-color 0.3s;
-    background-color: #003399; /* Тёмно-синий фон для ссылок */
+    padding: 0 20px;
+    font-size: 1.2rem;
 }
 
-header nav ul li a:hover {
-    background-color: #005577;
-}
-
-footer {
-    background-color: #000055; /* Темно-синий фон для подвала */
-    color: #ffffff; /* Белый цвет текста */
-    text-align: center;
-    padding: 10px 0;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    z-index: 2;
-    position: relative;
-}
-
-footer .footer-content a {
-    color: #ffffff;
-    text-decoration: none;
-    margin-left: 10px;
-}
-
-footer .footer-content a:hover {
+nav a:hover {
     text-decoration: underline;
 }
 
+/* Стили для подвала */
+footer {
+    background: var(--primary-bg);
+    color: var(--secondary-text);
+    text-align: center;
+    padding: 15px;
+}
+
+footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Стили для основной части */
+main {
+    padding: 30px;
+}
+
 .card {
-    width: 400px;
+    width: 500px;
     margin: 50px auto;
-    background-color: #000022; /* Темно-синий фон для карточек */
-    color: #ffffff; /* Белый цвет текста */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2), inset 0 -10px 10px rgba(0, 0, 0, 0.6); /* Добавляем внутреннюю тень для эффекта свечения */
-    z-index: 2;
-    position: relative;
+    background-color: var(--primary-bg);
+    color: var(--secondary-text);
+    padding: 30px;
+    border-radius: var(--card-border-radius);
+    box-shadow: 0 0 var(--shadow-depth) rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease; /* Плавное изменение размера карточки */
 }
 
 .card h2 {
     margin-top: 0;
-    color: #ffcc00; /* Жёлтый цвет для заголовков карточек */
+    color: var(--accent-color);
+    font-size: 2rem;
 }
 
 .card img {
     width: 100%;
     height: auto;
     margin: 20px 0;
-    filter: grayscale(100%) brightness(70%); /* Серебряное изображение с уменьшенной яркостью */
 }
 
 .connect-button a {
     display: inline-block;
-    background-color: #0088bb; /* Синяя кнопка с космическим оттенком */
-    color: #ffffff;
-    padding: 10px 20px;
+    background-color: var(--button-bg);
+    color: white;
+    padding: 15px 30px;
     text-decoration: none;
     margin-top: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Тень для кнопки */
+    border-radius: 7px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease; /* Плавное изменение цвета фона кнопки */
 }
 
-/* Дополнительные стили для улучшения внешнего вида */
-a:hover {
-    opacity: 0.9; /* Понижение прозрачности при наведении */
+.connect-button a:hover {
+    background-color: var(--button-hover-color);
 }
 
-h1, h2, p {
-    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5); /* Тень для текста */
+/* Анимация увеличения размера карточки при наведении */
+.card:hover {
+    transform: scale(1.05); /* Увеличиваем размер карточки на 5% */
 }
