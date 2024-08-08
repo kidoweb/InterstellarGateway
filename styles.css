@@ -2,17 +2,19 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #000033; /* Черный фон с космическим синим оттенком */
+    color: #ffffff; /* Белый цвет текста для контраста */
 }
 
 header {
-    background-color: #333;
-    color: #fff;
+    background-color: #000055; /* Темно-синий фон для шапки */
+    color: #ffffff; /* Белый цвет текста */
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    z-index: 2; /* Обеспечение наложения поверх частиц */
-    position: relative; /* Положение относительно для z-index */
+    z-index: 2;
+    position: relative;
 }
 
 header .logo {
@@ -22,7 +24,7 @@ header .logo {
 
 header .logo img {
     height: 40px;
-    margin-right: 10px;
+    filter: brightness(80%); /* Уменьшаем яркость логотипа для соответствия теме */
 }
 
 header nav ul {
@@ -37,31 +39,32 @@ header nav ul li {
 }
 
 header nav ul li a {
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
     padding: 5px 10px;
     border-radius: 3px;
     transition: background-color 0.3s;
+    background-color: #003399; /* Тёмно-синий фон для ссылок */
 }
 
 header nav ul li a:hover {
-    background-color: #555;
+    background-color: #005577;
 }
 
 footer {
-    background-color: #333;
-    color: #fff;
+    background-color: #000055; /* Темно-синий фон для подвала */
+    color: #ffffff; /* Белый цвет текста */
     text-align: center;
     padding: 10px 0;
     position: absolute;
     width: 100%;
     bottom: 0;
-    z-index: 2; /* Обеспечение наложения поверх частиц */
-    position: relative; /* Положение относительно для z-index */
+    z-index: 2;
+    position: relative;
 }
 
 footer .footer-content a {
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
     margin-left: 10px;
 }
@@ -70,124 +73,46 @@ footer .footer-content a:hover {
     text-decoration: underline;
 }
 
-/* Стили для карточки */
-.card {
-  width: 400px; /* Ширина карточки */
-  margin: 50px auto; /* Центрирование и отступы */
-  background-color: #333; /* Темный фон карточки */
-  color: #fff; /* Цвет текста */
-  padding: 20px;
-  border-radius: 10px; /* Скругленные углы */
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); /* Световой эффект */
-  z-index: 2; /* Обеспечение наложения поверх частиц */
-  position: relative; /* Положение относительно для z-index */
-}
-
-.card h2 {
-  margin-top: 0; /* Убираем верхний отступ у заголовка */
-  color: #ffd700; /* Золотой цвет для заголовка */
-}
-
-/* Стили для изображения */
-.card img {
-  width: 100%; /* Изображение занимает всю ширину карточки */
-  height: auto; /* Высота подстраивается автоматически */
-  margin: 20px 0; /* Отступы вокруг изображения */
-}
-
-/* Стили для кнопки подключения */
-.connect-button a {
-  display: inline-block; /* Блочный элемент */
-  background-color: #007bff; /* Цвет фона кнопки */
-  color: white; /* Цвет текста на кнопке */
-  padding: 10px 20px; /* Поля вокруг текста кнопки */
-  text-decoration: none; /* Убираем подчеркивание ссылки */
-  margin-top: 20px; /* Отступ сверху от кнопки */
-  border-radius: 5px; /* Скругленные углы кнопки */
-}
-/* Основные стили сайта */
-
-/* Стили для шапки */
-header {
-    background: #333;
-    color: #fff;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-header img {
-    height: 50px;
-}
-
-header h1 {
-    margin: 0;
-}
-
-nav {
-    display: flex;
-}
-
-nav a {
-    color: #fff;
-    text-decoration: none;
-    padding: 0 15px;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
-
-/* Стили для подвала */
-footer {
-    background: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-}
-
-footer a {
-    color: #ffd700;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
-/* Стили для основной части */
-main {
-    padding: 20px;
-}
-
 .card {
     width: 400px;
     margin: 50px auto;
-    background-color: #333;
-    color: #fff;
+    background-color: #000022; /* Темно-синий фон для карточек */
+    color: #ffffff; /* Белый цвет текста */
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2), inset 0 -10px 10px rgba(0, 0, 0, 0.6); /* Добавляем внутреннюю тень для эффекта свечения */
+    z-index: 2;
+    position: relative;
 }
 
 .card h2 {
     margin-top: 0;
-    color: #ffd700;
+    color: #ffcc00; /* Жёлтый цвет для заголовков карточек */
 }
 
 .card img {
     width: 100%;
     height: auto;
     margin: 20px 0;
+    filter: grayscale(100%) brightness(70%); /* Серебряное изображение с уменьшенной яркостью */
 }
 
 .connect-button a {
     display: inline-block;
-    background-color: #007bff;
-    color: white;
+    background-color: #0088bb; /* Синяя кнопка с космическим оттенком */
+    color: #ffffff;
     padding: 10px 20px;
     text-decoration: none;
     margin-top: 20px;
     border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Тень для кнопки */
+}
+
+/* Дополнительные стили для улучшения внешнего вида */
+a:hover {
+    opacity: 0.9; /* Понижение прозрачности при наведении */
+}
+
+h1, h2, p {
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5); /* Тень для текста */
 }
