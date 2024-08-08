@@ -1,16 +1,17 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Orbitron', sans-serif; /* Используем шрифт в стиле космоса */
     margin: 0;
     padding: 0;
+    background: #000 url('path/to/stars-background.jpg') repeat; /* Фон с изображением звезд */
 }
 
 header {
-    background-color: #333;
-    color: #fff;
+    background-color: rgba(10, 20, 30, 0.9); /* Полупрозрачный темно-синий фон */
+    color: #00ff00; /* Неоновый зеленый цвет текста */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 20px;
 }
 
 header .logo {
@@ -19,8 +20,8 @@ header .logo {
 }
 
 header .logo img {
-    height: 40px;
-    margin-right: 10px;
+    height: 60px; /* Увеличиваем размер логотипа */
+    margin-right: 20px;
 }
 
 header nav ul {
@@ -31,35 +32,35 @@ header nav ul {
 }
 
 header nav ul li {
-    margin: 0 10px;
+    margin: 0 20px;
 }
 
 header nav ul li a {
-    color: #fff;
+    color: #00ff00; /* Неоновый зеленый цвет ссылок */
     text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 3px;
+    padding: 10px 20px;
+    border-radius: 5px;
     transition: background-color 0.3s;
 }
 
 header nav ul li a:hover {
-    background-color: #555;
+    background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный белый фон при наведении */
 }
 
 footer {
-    background-color: #333;
-    color: #fff;
+    background-color: rgba(10, 20, 30, 0.9); /* Полупрозрачный темно-синий фон */
+    color: #00ff00; /* Неоновый зеленый цвет текста */
     text-align: center;
-    padding: 10px 0;
+    padding: 20px 0;
     position: absolute;
     width: 100%;
     bottom: 0;
 }
 
 footer .footer-content a {
-    color: #fff;
+    color: #00ff00; /* Неоновый зеленый цвет ссылок */
     text-decoration: none;
-    margin-left: 10px;
+    margin-left: 20px;
 }
 
 footer .footer-content a:hover {
@@ -68,13 +69,13 @@ footer .footer-content a:hover {
 
 /* Стили для карточки */
 .card {
-  width: 400px; /* Ширина карточки */
-  margin: 50px auto; /* Центрирование и отступы */
-  background-color: #333; /* Темный фон карточки */
-  color: #fff; /* Цвет текста */
-  padding: 20px;
-  border-radius: 10px; /* Скругленные углы */
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); /* Световой эффект */
+  width: 500px; /* Увеличиваем ширину карточки */
+  margin: 100px auto; /* Увеличиваем отступы для центрирования */
+  background-color: rgba(10, 20, 30, 0.9); /* Полупрозрачный темно-синий фон карточки */
+  color: #00ff00; /* Неоновый зеленый цвет текста */
+  padding: 40px;
+  border-radius: 20px; /* Увеличиваем радиус скругления углов */
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.2); /* Усиливаем световой эффект */
 }
 
 .card h2 {
@@ -86,7 +87,7 @@ footer .footer-content a:hover {
 .card img {
   width: 100%; /* Изображение занимает всю ширину карточки */
   height: auto; /* Высота подстраивается автоматически */
-  margin: 20px 0; /* Отступы вокруг изображения */
+  margin: 40px 0; /* Увеличиваем отступы вокруг изображения */
 }
 
 /* Стили для кнопки подключения */
@@ -94,8 +95,8 @@ footer .footer-content a:hover {
   display: inline-block; /* Блочный элемент */
   background-color: #007bff; /* Цвет фона кнопки */
   color: white; /* Цвет текста на кнопке */
-  padding: 10px 20px; /* Поля вокруг текста кнопки */
+  padding: 20px 40px; /* Увеличиваем поля вокруг текста кнопки */
   text-decoration: none; /* Убираем подчеркивание ссылки */
-  margin-top: 20px; /* Отступ сверху от кнопки */
-  border-radius: 5px; /* Скругленные углы кнопки */
+  margin-top: 40px; /* Увеличиваем отступ сверху от кнопки */
+  border-radius: 10px; /* Увеличиваем радиус скругления углов кнопки */
 }
