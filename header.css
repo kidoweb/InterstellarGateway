@@ -1,113 +1,52 @@
-/* Общие стили для body */
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
-
 /* Стили для шапки сайта */
 header {
-    background-color: #f8f9fa;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 2;
 }
 
-/* Стили для логотипа и названия проекта */
 .logo {
     display: flex;
     align-items: center;
 }
 
 .logo img {
-    height: 40px;
-    width: auto;
-    margin-right: 10px;
+    height: 50px;
+    margin-right: 15px;
 }
 
 .logo span {
-    font-weight: bold;
     font-size: 24px;
-}
-
-/* Стили для навигационного меню */
-nav {
-    flex: 1;
-    text-align: center;
+    color: #ffd700;
+    font-weight: bold;
 }
 
 nav ul {
-    list-style-type: none;
+    list-style: none;
+    display: flex;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
 }
 
 nav ul li {
-    display: inline;
+    margin-left: 20px;
 }
 
 nav ul li a {
+    color: #fff;
     text-decoration: none;
-    color: #333;
-    font-size: 16px;
+    font-size: 18px;
+    padding: 5px 10px;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
     position: relative;
-    transition: color 0.3s ease;
-}
-
-/* Анимация для навигационных ссылок */
-nav ul li a::after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 2px;
-    background: #007bff;
-    transition: width 0.3s;
-    position: absolute;
-    bottom: -5px;
-    left: 0;
 }
 
 nav ul li a:hover {
-    color: #007bff;
-}
-
-nav ul li a:hover::after {
-    width: 100%;
-}
-
-/* Стили для мобильной версии */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        padding: 10px;
-    }
-
-    .logo {
-        order: 1;
-    }
-
-    nav {
-        width: 100%;
-    }
-
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    nav ul li {
-        text-align: center;
-    }
+    color: #ffd700;
+    border-bottom: 2px solid #ffd700;
 }
