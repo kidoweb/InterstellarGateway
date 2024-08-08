@@ -9,7 +9,7 @@ html {
     top: 0;
     width: 100vw;
     height: 100vh;
-    background: url('images/logo3.jpg') no-repeat center center;
+    background: url('images/logo3.png') no-repeat center center;
     background-size: cover; /* Покрытие всего элемента */
 }
 
