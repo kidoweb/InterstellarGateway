@@ -39,11 +39,12 @@ header nav ul li a {
     text-decoration: none;
     padding: 5px 10px;
     border-radius: 3px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s; /* Добавлена анимация трансформации */
 }
 
 header nav ul li a:hover {
     background-color: #555;
+    transform: scale(1.05); /* Увеличение размера при наведении */
 }
 
 footer {
@@ -64,4 +65,9 @@ footer .footer-content a {
 
 footer .footer-content a:hover {
     text-decoration: underline;
+}
+
+/* Плавная прокрутка к якорям */
+html {
+    scroll-behavior: smooth;
 }
