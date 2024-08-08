@@ -7,8 +7,6 @@
     
     <!-- Основные стили -->
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" href="footer.css">
     
     <!-- Стили для частиц -->
     <link rel="stylesheet" href="particles.css">
@@ -16,16 +14,26 @@
     <!-- Подключение скриптов для частиц -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
     <script src="js/particles.js" defer></script>
-    
-    <!-- Скрипт для загрузки хедера и подвала -->
-    <script src="js/loadheaderfooter.js" defer></script>
 </head>
 <body>
     <!-- Элементы частиц -->
     <div id="particles-js"></div>
     
-    <!-- Включение header -->
-    <div id="header"></div>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="logo">
+            <img src="images/logo1.png" alt="Логотип">
+            <span>InterstellarGateway</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#servers">Сервера</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
     
     <!-- Основной контент -->
     <main>
@@ -43,7 +51,12 @@
         </div>
     </main>
     
-    <!-- Включение footer -->
-    <div id="footer"></div>
+    <!-- Футер сайта -->
+    <footer>
+        <div class="footer-content">
+            <span>&copy; 2024 InterstellarGateway - Все права защищены.</span>
+            <a href="privacy.html">Политика конфиденциальности</a>
+        </div>
+    </footer>
 </body>
 </html>
