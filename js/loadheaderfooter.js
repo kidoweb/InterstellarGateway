@@ -7,7 +7,13 @@ function loadContent(elementId, filePath) {
             return response.text();
         })
         .then(data => {
-            document.getElementById(elementId).innerHTML = data;
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.innerHTML = data;
+                console.log(`Content loaded for ${elementId} from ${filePath}`);
+            } else {
+                console.error(`Element with ID ${elementId} not found`);
+            }
         })
         .catch(error => {
             console.error('There has been a problem with your fetch operation:', error);
@@ -15,6 +21,7 @@ function loadContent(elementId, filePath) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOMContentLoaded event fired');
     loadContent('header', 'header.html');
     loadContent('footer', 'footer.html');
 });
