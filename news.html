@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadNews();
 });
 
-        function loadNews() {
+function loadNews() {
     const newsRef = ref(database, 'news/');
     onValue(newsRef, (snapshot) => {
         const newsArray = [];
@@ -97,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 }
+
 
         // Function to add news
         window.addNews = function() {
