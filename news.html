@@ -3,11 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <title>Новости Interstellar Gateway</title>
+
     <!-- Основные стили -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Подключение скриптов для частиц -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
     <script src="js/particles.js" defer></script>
+    <!-- Подключаем стили и скрипты Froala Editor -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.13/css/froala_editor.pkgd.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.13/js/froala_editor.pkgd.min.js"></script>
+    <!-- Подключаем локализацию на русском языке -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.13/js/languages/ru.min.js"></script>
+
     <!-- Подключение Firebase -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
@@ -29,20 +37,54 @@
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
 
+        // Initialize Froala editor
+let froalaEditor;
+document.addEventListener('DOMContentLoaded', () => {
+    froalaEditor = new FroalaEditor('#editor-container', {
+        heightMin: 200,
+        language: 'ru',
+        toolbarButtons: [
+            'bold', 'italic', 'underline', 'strikeThrough', 
+            'formatUL', 'formatOL', 'insertLink', 'insertImage', 
+            'undo', 'redo', 'html', 'alignLeft', 'alignCenter', 
+            'alignRight', 'alignJustify'
+        ],
+        pluginsEnabled: [
+            'align', 'link', 'lists', 'paragraphFormat', 
+            'paragraphStyle', 'table', 'url', 'entities', 'image'
+        ],
+        toolbarButtonsXS: ['bold', 'italic', 'underline', 'alignLeft', 'alignCenter'],
+        toolbarButtonsSM: ['bold', 'italic', 'underline', 'alignLeft', 'alignCenter', 'alignRight'],
+        toolbarButtonsMD: ['bold', 'italic', 'underline', 'alignLeft', 'alignCenter', 'alignRight', 'alignJustify'],
+    });
+    loadNews();
+});
+
         // Function to load news
         function loadNews() {
             const newsRef = ref(database, 'news/');
             onValue(newsRef, (snapshot) => {
-                const newsContainer = document.getElementById('news-container');
-                newsContainer.innerHTML = ''; // Clear previous content
+                const newsArray = [];
                 snapshot.forEach((childSnapshot) => {
                     const newsItem = childSnapshot.val();
-                    const newsId = childSnapshot.key;
+                    newsItem.id = childSnapshot.key;
+                    newsItem.timestamp = newsItem.timestamp || Date.now();
+                    newsArray.push(newsItem);
+                });
+
+                // Sort news by timestamp (newest first)
+                newsArray.sort((a, b) => b.timestamp - a.timestamp);
+
+                const newsContainer = document.getElementById('news-container');
+                newsContainer.innerHTML = '';
+                newsArray.forEach((newsItem) => {
                     const truncatedContent = newsItem.content.length > 100 ? newsItem.content.substring(0, 100) + '...' : newsItem.content;
+                    const date = new Date(newsItem.timestamp).toLocaleString();
                     newsContainer.innerHTML += `
-                        <div class="news-card" id="news-${newsId}" onclick="openNewsModal('${newsId}')">
+                        <div class="news-card" id="news-${newsItem.id}" onclick="openNewsModal('${newsItem.id}')">
                             <h2>${newsItem.title}</h2>
                             <p>${truncatedContent}</p>
+                            <small>${date}</small>
                         </div>
                     `;
                 });
@@ -53,20 +95,21 @@
         window.addNews = function() {
             const secretCode = document.getElementById('secret-code').value;
             if (secretCode === "plsdontusewhis90823") {
-                document.getElementById('add-news-button').style.display = 'inline-block'; // Show the add news button
                 const title = document.getElementById('news-title').value;
-                const content = document.getElementById('news-content').value;
+                const content = froalaEditor.html.get();
                 const newsRef = ref(database, 'news/');
                 const newNewsRef = push(newsRef);
                 set(newNewsRef, {
                     title: title,
-                    content: content
+                    content: content,
+                    timestamp: Date.now()
                 }).then(() => {
                     alert("Новость добавлена!");
                     loadNews();
-                    closeModal(); // Close the modal after adding news
+                    closeModal();
                 }).catch((error) => {
                     console.error("Ошибка при добавлении новости:", error);
+                    alert("Произошла ошибка при добавлении новости. Пожалуйста, попробуйте еще раз.");
                 });
             } else {
                 alert("Неверный секретный код!");
@@ -91,7 +134,7 @@
                 document.getElementById('news-modal-content').innerHTML = `
                     <span class="close" onclick="closeNewsModal()">&times;</span>
                     <h2>${newsItem.title}</h2>
-                    <p>${newsItem.content}</p>
+                    <div>${newsItem.content}</div>
                 `;
                 document.getElementById('news-modal').style.display = 'flex';
             });
@@ -109,10 +152,8 @@
                 closeNewsModal();
             }
         });
-
-        // Load news on page load
-        window.onload = loadNews;
     </script>
+
     <style>
         /* Основные стили для страницы */
         body {
@@ -135,7 +176,7 @@
 
         /* Стили для контейнера новостей */
         .news-container {
-            margin-left: 0; /* Сдвигаем контейнер до левой границы */
+            margin-left: 0;
             padding: 0 20px;
         }
 
@@ -164,6 +205,12 @@
             margin: 0;
         }
 
+        .news-card small {
+            display: block;
+            margin-top: 10px;
+            color: #ccc;
+        }
+
         /* Стили для модального окна */
         #modal, #news-modal {
             display: none;
@@ -172,39 +219,43 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.7);
             justify-content: center;
             align-items: center;
         }
 
         #modal-content {
-            background: #fff;
+            background: #293347;
             padding: 20px;
             border-radius: 8px;
             width: 90%;
             max-width: 500px;
             position: relative;
-        }
-
-        #modal-content h2 {
-            margin-top: 0;
+            text-align: left;
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         #modal-content input, #modal-content textarea {
-            width: 100%;
+            width: calc(100% - 20px);
             padding: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             border: 1px solid #ddd;
             border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+            background-color: #fff;
+            color: #000;
         }
 
         #modal-content button {
-            padding: 10px 15px;
+            padding: 12px 20px;
             background-color: #007bff;
             color: #fff;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 16px;
         }
 
         #modal-content button:hover {
@@ -216,8 +267,12 @@
             top: 10px;
             right: 10px;
             cursor: pointer;
-            font-size: 20px;
-            color: #000;
+            font-size: 24px;
+            color: #fff;
+        }
+
+        #modal-content .close:hover {
+            color: #0056b3;
         }
 
         /* Стили для кнопки добавления новости */
@@ -225,7 +280,7 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            z-index: 1000; /* Ensure it is above other content */
+            z-index: 1000;
         }
 
         .add-news-button button {
@@ -284,6 +339,46 @@
             color: #fff;
         }
 
+        /* Стили для контейнера Froala редактора */
+        #editor-container {
+            height: auto;
+            margin-bottom: 20px;
+            overflow-y: auto;
+        }
+
+        .fr-view {
+            min-height: 200px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+            outline: none;
+            box-sizing: border-box;
+            background-color: #fff;
+            color: #000;
+            font-size: 16px;
+        }
+
+        .fr-view p {
+            margin-bottom: 10px;
+        }
+
+        .fr-view h1, .fr-view h2, .fr-view h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .fr-view ul, .fr-view ol {
+            margin-left: 20px;
+        }
+
+        .fr-view blockquote {
+            border-left: 4px solid #007bff;
+            padding-left: 15px;
+            margin: 10px 0;
+            color: #666;
+        }
+
         /* Медиа-запросы для адаптации дизайна */
         @media (max-width: 768px) {
             main {
@@ -326,7 +421,7 @@
 
         <!-- Кнопка добавления новости -->
         <div class="add-news-button" id="add-news-button">
-            <button onclick="openModal()"></button>
+            <button onclick="openModal()">Добавить новость</button>
         </div>
     </main>
 
@@ -336,7 +431,7 @@
             <span class="close" onclick="closeModal()">&times;</span>
             <h2>Добавить новость</h2>
             <input type="text" id="news-title" placeholder="Заголовок новости" />
-            <textarea id="news-content" rows="5" placeholder="Содержание новости"></textarea>
+            <div id="editor-container"></div> <!-- Контейнер для редактора Froala -->
             <input type="text" id="secret-code" placeholder="Введите секретный код" />
             <button onclick="addNews()">Добавить</button>
         </div>
