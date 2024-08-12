@@ -52,7 +52,7 @@
         // Function to add news
         window.addNews = function() {
             const secretCode = document.getElementById('secret-code').value;
-            if (secretCode === "SECRET123") {
+            if (secretCode === "plsdontusewhis90823") {
                 document.getElementById('add-news-button').style.display = 'inline-block'; // Show the add news button
                 const title = document.getElementById('news-title').value;
                 const content = document.getElementById('news-content').value;
@@ -238,8 +238,6 @@
             font-size: 16px;
         }
 
-        
-
         /* Стили для модального окна с новостью */
         #news-modal-content {
             background: #293347;
@@ -284,6 +282,29 @@
             cursor: pointer;
             font-size: 24px;
             color: #fff;
+        }
+
+        /* Медиа-запросы для адаптации дизайна */
+        @media (max-width: 768px) {
+            main {
+                padding: 10px;
+            }
+
+            .news-card {
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+
+            #modal-content, #news-modal-content {
+                width: 95%;
+                max-width: 100%;
+                padding: 10px;
+            }
+
+            .add-news-button button {
+                padding: 5px 10px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
