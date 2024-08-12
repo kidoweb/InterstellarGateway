@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Политика конфиденциальности - InterstellarGateway</title>
+    <title>Политика конфиденциальности - Interstellar Gateway</title>
     
     <!-- Подключение стилей -->
     <link rel="stylesheet" href="styles.css">
@@ -16,27 +16,14 @@
     <!-- Элементы частиц -->
     <div id="particles-js"></div>
     
-    <!-- Шапка сайта -->
-    <header>
-        <div class="logo">
-            <img src="images/logo1.png" alt="Логотип">
-            <span>InterstellarGateway</span>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="#about">О нас</a></li>
-                <li><a href="#servers">Сервера</a></li>
-                <li><a href="#contact">Контакты</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Подключение хедера -->
+    <div id="header-placeholder"></div>
     
     <!-- Основной контент -->
     <main>
         <section class="policy-card">
             <h1>Политика конфиденциальности</h1>
-            <p>В этой политике конфиденциальности описаны условия обработки персональных данных пользователей сайта InterstellarGateway.</p>
+            <p>В этой политике конфиденциальности описаны условия обработки персональных данных пользователей сайта Interstellar Gateway.</p>
             
             <h2>1. Сбор и обработка данных</h2>
             <p>Мы собираем только те данные, которые необходимы для предоставления наших услуг. Это могут быть следующие данные:</p>
@@ -79,12 +66,38 @@
         </section>
     </main>
     
-    <!-- Футер сайта -->
-    <footer>
-        <div class="footer-content">
-            <span>&copy; 2024 InterstellarGateway</span>
-            <a href="privacy.html">Политика конфиденциальности</a>
-        </div>
-    </footer>
+    <!-- Подключение футера -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Подключение хедера
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+
+                // Инициализация событий или других зависимостей для хедера
+                initHeaderEvents(); // Если есть события для инициализации
+            });
+
+        // Подключение футера
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+
+                // Инициализация событий или других зависимостей для футера
+                initFooterEvents(); // Если есть события для инициализации
+            });
+
+        // Функции для инициализации событий
+        function initHeaderEvents() {
+            // Ваша логика для инициализации событий в хедере
+        }
+
+        function initFooterEvents() {
+            // Ваша логика для инициализации событий в футере
+        }
+    </script>
 </body>
 </html>
