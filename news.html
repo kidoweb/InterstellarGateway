@@ -60,36 +60,43 @@ document.addEventListener('DOMContentLoaded', () => {
     loadNews();
 });
 
-        // Function to load news
         function loadNews() {
-            const newsRef = ref(database, 'news/');
-            onValue(newsRef, (snapshot) => {
-                const newsArray = [];
-                snapshot.forEach((childSnapshot) => {
-                    const newsItem = childSnapshot.val();
-                    newsItem.id = childSnapshot.key;
-                    newsItem.timestamp = newsItem.timestamp || Date.now();
-                    newsArray.push(newsItem);
-                });
+    const newsRef = ref(database, 'news/');
+    onValue(newsRef, (snapshot) => {
+        const newsArray = [];
+        snapshot.forEach((childSnapshot) => {
+            const newsItem = childSnapshot.val();
+            newsItem.id = childSnapshot.key;
+            newsItem.timestamp = newsItem.timestamp || Date.now();
+            newsArray.push(newsItem);
+        });
 
-                // Sort news by timestamp (newest first)
-                newsArray.sort((a, b) => b.timestamp - a.timestamp);
+        // Sort news by timestamp (newest first)
+        newsArray.sort((a, b) => b.timestamp - a.timestamp);
 
-                const newsContainer = document.getElementById('news-container');
-                newsContainer.innerHTML = '';
-                newsArray.forEach((newsItem) => {
-                    const truncatedContent = newsItem.content.length > 100 ? newsItem.content.substring(0, 100) + '...' : newsItem.content;
-                    const date = new Date(newsItem.timestamp).toLocaleString();
-                    newsContainer.innerHTML += `
-                        <div class="news-card" id="news-${newsItem.id}" onclick="openNewsModal('${newsItem.id}')">
-                            <h2>${newsItem.title}</h2>
-                            <p>${truncatedContent}</p>
-                            <small>${date}</small>
-                        </div>
-                    `;
-                });
+        const newsContainer = document.getElementById('news-container');
+        newsContainer.innerHTML = '';
+        newsArray.forEach((newsItem) => {
+            const truncatedContent = newsItem.content.length > 100 ? newsItem.content.substring(0, 100) + '...' : newsItem.content;
+            const date = new Date(newsItem.timestamp).toLocaleString('ru-RU', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric',
+                second: 'numeric'
             });
-        }
+            newsContainer.innerHTML += `
+                <div class="news-card" id="news-${newsItem.id}" onclick="openNewsModal('${newsItem.id}')">
+                    <h2>${newsItem.title}</h2>
+                    <p>${truncatedContent}</p>
+                    <small>${date}</small>
+                </div>
+            `;
+        });
+    });
+}
 
         // Function to add news
         window.addNews = function() {
