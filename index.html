@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InterstellarGateway</title>
     
     <!-- Основные стили -->
     <link rel="stylesheet" href="styles.css">
@@ -15,45 +14,61 @@
 <body>
     <!-- Элементы частиц -->
     <div id="particles-js"></div>
-    
-    <!-- Шапка сайта -->
-    <header>
-        <div class="logo">
-            <img src="images/logo1.png" alt="Логотип InterstellarGateway">
-            <span>InterstellarGateway</span>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="#about">О нас</a></li>
-                <li><a href="#servers">Сервера</a></li>
-                <li><a href="#contact">Контакты</a></li>
-            </ul>
-        </nav>
-    </header>
-    
+
+    <!-- Подключение хедера -->
+    <div id="header-placeholder"></div>
+
     <!-- Основной контент -->
     <main>
-        <h1>Добро пожаловать на InterstellarGateway</h1>
-        <p>Здесь вы найдете информацию о наших игровых серверах Garry's Mod.</p>
+        <h1>Добро пожаловать на Interstellar Gateway</h1>
+        <p>Проект игровых серверах Garry's Mod.</p>
         
-        <div class="card">
-            <h2>1.IG|Galactic Conflict</h2>
-            <a href="http://www.myarena.ru/game-monitoring.html?game=88653">
-                <img src="//img.myarena.ru/88653/560.png" alt="Баннер игры Galactic Conflict">
-            </a>
-            <div class="connect-button">
-                <a href="steam://connect/46.174.50.56:27015">Подключиться</a>
+        <div class="content-container">
+            <div class="card">
+                <h2>IG|Galactic Conflict</h2>
+                <h3>Игровой сервер по StarWars Rp</h3>
+                <a href="http://www.myarena.ru/game-monitoring.html?game=88653">
+                    <img src="//img.myarena.ru/88653/560.png" alt="Баннер игры Galactic Conflict">
+                </a>
+                <div class="connect-button">
+                    <a href="steam://connect/46.174.50.56:27015">Подключиться</a>
+                </div>
+            </div>
+
+            <!-- Информация "Как начать играть?" -->
+            <div class="how-to-play">
+                <h2>Как начать играть?</h2>
+                <p>1. Прочитайте про наши РП сервера и выберите тот, который вам понравится больше всего.</p>
+                <p>2. Необходимо наличие Steam.</p>
+                <p>3. А также игры Garry's Mod.</p>
+                <p>4. На странице сервера найдите кнопку "Подключиться" и наслаждайтесь игрой!</p>
+                
+                <!-- Кнопки -->
+                <div class="buttons">
+                    <a class="button" href="https://steamcommunity.com/" target="_blank">Скачать Steam</a>
+                    <a class="button" href="https://store.steampowered.com/app/4000/Garrys_Mod/" target="_blank">Купить Garry's Mod</a>
+                </div>
             </div>
         </div>
     </main>
-    
-    <!-- Футер сайта -->
-    <footer>
-        <div class="footer-content">
-            <span>&copy; 2024 InterstellarGateway</span>
-            <a href="privacy.html">Политика конфиденциальности</a>
-        </div>
-    </footer>
+
+    <!-- Подключение футера -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Подключение хедера
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+
+        // Подключение футера
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
 </body>
 </html>
