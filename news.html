@@ -224,13 +224,13 @@
         .add-news-button {
             position: fixed;
             bottom: 20px;
-            right: -1500px;
+            right: 20px;
             z-index: 1000; /* Ensure it is above other content */
         }
 
         .add-news-button button {
             padding: 10px 20px;
-            background-color: #28a745;
+            background-color: rgba(255, 255, 255, 0);
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -238,9 +238,7 @@
             font-size: 16px;
         }
 
-        .add-news-button button:hover {
-            background-color: #218838;
-        }
+        
 
         /* Стили для модального окна с новостью */
         #news-modal-content {
@@ -307,7 +305,7 @@
 
         <!-- Кнопка добавления новости -->
         <div class="add-news-button" id="add-news-button">
-            <button onclick="openModal()">Добавить новость</button>
+            <button onclick="openModal()"></button>
         </div>
     </main>
 
