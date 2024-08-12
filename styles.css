@@ -1,37 +1,38 @@
-/* Общие стили для body */
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    color: #ffffff; /* Белый цвет текста */
+    color: #ffffff;
     margin: 0;
     padding: 0;
     background: radial-gradient(circle at center, #000022, #001b33) repeat-x; /* Космический фон */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Стили для шапки сайта */
 header {
-    background-color: rgba(0, 0, 0, 0.8); /* Темный фон шапки */
     color: #ffffff;
     padding: 10px 0;
     display: flex;
-    justify-content: start; /* Элементы начало шапки */
+    justify-content: space-between; /* Распределяет элементы по краям */
     align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
+    width: 100%;
+    position: relative;
 }
 
-.logo img {
-    height: 40px; /* Размер логотипа */
-    margin-right: 10px;
+.logo {
+    flex: 1; /* Логотип занимает одно место */
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }
 
-.logo span {
-    font-size: 22px; /* Размер текста названия сайта */
-    font-weight: bold;
-    color: #ffffff;
+nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
 }
 
 nav ul {
@@ -45,13 +46,158 @@ nav ul {
 nav ul li a {
     text-decoration: none;
     color: #ffffff;
-    font-size: 16px;
-    transition: color 0.3s, border-bottom 0.3s;
+    font-size: 18px; /* Увеличенный размер текста */
+    transition: color 0.3s ease, border-bottom 0.3s ease, transform 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #ffccbc; /* Желтый цвет при наведении */
+    color: #ffccbc; /* Цвет при наведении */
     border-bottom: 2px solid #ffccbc;
+    transform: scale(1.2) rotate(3deg); /* Увеличение и небольшое вращение при наведении */
+}
+
+/* Основной контент должен занимать всё доступное пространство */
+main {
+    flex: 1;
+    padding: 30px 50px;
+    max-width: 800px;
+    margin: 10; /* Центрирование по горизонтали */
+    color: #ffffff;
+    border-radius: 10px;
+    transform: scale(1.05);
+    position: relative; /* Необходимо для абсолютного позиционирования .how-to-play */
+}
+
+/* Стили для контейнера контента */
+.content-container {
+    display: flex;
+    gap: 20px;
+}
+
+/* Стили для карточек */
+.card {
+    flex: 1;
+    margin-bottom: 20px;
+    padding: 10px; /* Отступ в 10 пикселей от всех краев */
+    background-color: rgba(255, 255, 255, 0.1); /* Легкий полупрозрачный фон */
+    border-radius: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05); /* Легкое увеличение карточки */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Тень при наведении */
+}
+
+.connect-button a {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    background-color: #ffc107;
+    color: #1b1b1b;
+    text-align: center;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.connect-button a:hover {
+    background-color: #e0a800;
+    transform: scale(1.05);
+}
+
+/* Стили для контейнера "Как начать играть?" */
+.how-to-play-container {
+    position: relative; /* Относительное позиционирование для контейнера с карточками */
+    overflow: visible; /* Убедитесь, что контейнер позволяет блоку выходить за границы */
+}
+
+.how-to-play {
+    position: absolute;
+    right: -800px; /* Блок выдвинут немного за пределы контейнера, чтобы быть максимально вправо */
+    top: 30px; /* Располагаем блок на расстоянии 20px от верхнего края */
+    background-color: #293347;
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 250px; /* Минимальная ширина блока */
+    max-width: 35%; /* Максимальная ширина блока */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.how-to-play:hover {
+    transform: scale(1.1); /* Легкое увеличение карточки */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Тень при наведении */
+}
+/* Текстовые стили внутри блока "Как начать играть?" */
+.how-to-play h2 {
+    color: #ffc107;
+    margin-bottom: 15px;
+}
+
+.how-to-play p {
+    margin: 10px 0;
+}
+
+/* Стили для кнопок внутри блока "Как начать играть?" */
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.button {
+    background-color: #ffc107;
+    color: #1b1b1b;
+    text-align: center;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.button:hover {
+    background-color: #e0a800;
+    transform: scale(1.05);
+}
+
+/* Стили для карточки политики конфиденциальности */
+.policy-card {
+    background-color: rgba(41, 51, 71, 0.8); /* Темный полупрозрачный фон для карточки */
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Тень карточки */
+}
+
+.policy-card h1, .policy-card h2 {
+    color: #ffc107;
+}
+
+.policy-card p, .policy-card ul {
+    margin: 10px 0;
+    color: #ffffff;
+}
+
+.policy-card ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.policy-card ul li {
+    margin-bottom: 5px;
+}
+
+.policy-card a {
+    color: #ffccbc;
+    text-decoration: none;
+}
+
+.policy-card a:hover {
+    color: #ffd700;
 }
 
 /* Стили для футера */
@@ -60,15 +206,13 @@ footer {
     color: #ffffff;
     padding: 10px;
     text-align: center;
-    position: fixed;
-    bottom: 0;
     width: 100%;
     left: 0;
     right: 0;
-    z-index: 50;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: auto;
 }
 
 .footer-content {
@@ -96,21 +240,39 @@ footer {
     color: #ffd700; /* Золотистый цвет при наведении */
 }
 
-/* Стили для основной части сайта */
-.main-content {
-    padding: 20px;
-    max-width: 800px;
-    margin: 60px auto;
-    background-color: rgba(0, 0, 0, 0.9); /* Темный фон для контента */
-    color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+/* Адаптация под мобильные устройства */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    main {
+        padding: 20px 10px; /* Уменьшение отступа для лучшей адаптации */
+    }
+
+    .content-container {
+        flex-direction: column;
+    }
+
+    footer {
+        flex-direction: column;
+        padding: 20px;
+    }
 }
 
-.main-content h1, .main-content h2 {
-    color: #ffccbc;
-}
-
-.main-content p {
-    margin-bottom: 20px;
+/* Стили для элемента частиц */
+#particles-js {
+    position: fixed;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: transparent; /* Прозрачный фон */
 }
