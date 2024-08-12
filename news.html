@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Основные стили -->
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
+    <script src="js/particles.js" defer></script>
+    <!-- Подключение Firebase -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+        import { getDatabase, ref, onValue, push, set } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBo6sm-D7KpWhnYkjZrhJnoIE0sNwpTVIc",
+            authDomain: "interstellargateway-149ae.firebaseapp.com",
+            databaseURL: "https://interstellargateway-149ae-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "interstellargateway-149ae",
+            storageBucket: "interstellargateway-149ae.appspot.com",
+            messagingSenderId: "665939536665",
+            appId: "1:665939536665:web:ce35dc47d05810bf677388",
+            measurementId: "G-BEH8RS3YGB"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        // Function to load news
+        function loadNews() {
+            const newsRef = ref(database, 'news/');
+            onValue(newsRef, (snapshot) => {
+                const newsContainer = document.getElementById('news-container');
+                newsContainer.innerHTML = ''; // Clear previous content
+                snapshot.forEach((childSnapshot) => {
+                    const newsItem = childSnapshot.val();
+                    const newsId = childSnapshot.key;
+                    const truncatedContent = newsItem.content.length > 100 ? newsItem.content.substring(0, 100) + '...' : newsItem.content;
+                    newsContainer.innerHTML += `
+                        <div class="news-card" id="news-${newsId}" onclick="openNewsModal('${newsId}')">
+                            <h2>${newsItem.title}</h2>
+                            <p>${truncatedContent}</p>
+                        </div>
+                    `;
+                });
+            });
+        }
+
+        // Function to add news
+        window.addNews = function() {
+            const secretCode = document.getElementById('secret-code').value;
+            if (secretCode === "SECRET123") {
+                document.getElementById('add-news-button').style.display = 'inline-block'; // Show the add news button
+                const title = document.getElementById('news-title').value;
+                const content = document.getElementById('news-content').value;
+                const newsRef = ref(database, 'news/');
+                const newNewsRef = push(newsRef);
+                set(newNewsRef, {
+                    title: title,
+                    content: content
+                }).then(() => {
+                    alert("Новость добавлена!");
+                    loadNews();
+                    closeModal(); // Close the modal after adding news
+                }).catch((error) => {
+                    console.error("Ошибка при добавлении новости:", error);
+                });
+            } else {
+                alert("Неверный секретный код!");
+            }
+        }
+
+        // Function to open the modal
+        window.openModal = function() {
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        // Function to close the modal
+        window.closeModal = function() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        // Function to open the news modal
+        window.openNewsModal = function(newsId) {
+            const newsRef = ref(database, `news/${newsId}`);
+            onValue(newsRef, (snapshot) => {
+                const newsItem = snapshot.val();
+                document.getElementById('news-modal-content').innerHTML = `
+                    <span class="close" onclick="closeNewsModal()">&times;</span>
+                    <h2>${newsItem.title}</h2>
+                    <p>${newsItem.content}</p>
+                `;
+                document.getElementById('news-modal').style.display = 'flex';
+            });
+        }
+
+        // Function to close the news modal
+        window.closeNewsModal = function() {
+            document.getElementById('news-modal').style.display = 'none';
+        }
+
+        // Close the modal when pressing ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+                closeNewsModal();
+            }
+        });
+
+        // Load news on page load
+        window.onload = loadNews;
+    </script>
+    <style>
+        /* Основные стили для страницы */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .content-container {
+            margin: 20px 0;
+        }
+
+        /* Стили для контейнера новостей */
+        .news-container {
+            margin-left: 0; /* Сдвигаем контейнер до левой границы */
+            padding: 0 20px;
+        }
+
+        .news-card {
+            background-color: #293347;
+            color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .news-card h2 {
+            color: #ffc107;
+            margin-bottom: 10px;
+        }
+
+        .news-card p {
+            margin: 0;
+        }
+
+        /* Стили для модального окна */
+        #modal, #news-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        #modal-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        #modal-content h2 {
+            margin-top: 0;
+        }
+
+        #modal-content input, #modal-content textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #modal-content button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #modal-content button:hover {
+            background-color: #0056b3;
+        }
+
+        #modal-content .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            color: #000;
+        }
+
+        /* Стили для кнопки добавления новости */
+        .add-news-button {
+            position: fixed;
+            bottom: 20px;
+            right: -1500px;
+            z-index: 1000; /* Ensure it is above other content */
+        }
+
+        .add-news-button button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .add-news-button button:hover {
+            background-color: #218838;
+        }
+
+        /* Стили для модального окна с новостью */
+        #news-modal-content {
+            background: #293347;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 90%;
+            width: 600px;
+            text-align: center;
+            position: relative;
+        }
+
+        #news-modal-content .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 24px;
+            color: #fff;
+        }
+
+        #news-modal h2 {
+            margin-top: 0;
+        }
+
+        /* Фон модального окна с новостью */
+        #news-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        #news-modal .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            font-size: 24px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Элементы частиц -->
+    <div id="particles-js"></div>
+
+    <!-- Подключение хедера -->
+    <div id="header-placeholder"></div>
+
+    <!-- Основной контент -->
+    <main>
+        <h1>Новости Interstellar Gateway</h1>
+
+        <!-- Контейнер новостей -->
+        <div id="news-container" class="news-container">
+            <!-- Новости будут загружаться сюда -->
+        </div>
+
+        <!-- Кнопка добавления новости -->
+        <div class="add-news-button" id="add-news-button">
+            <button onclick="openModal()">Добавить новость</button>
+        </div>
+    </main>
+
+    <!-- Модальное окно для добавления новости -->
+    <div id="modal">
+        <div id="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Добавить новость</h2>
+            <input type="text" id="news-title" placeholder="Заголовок новости" />
+            <textarea id="news-content" rows="5" placeholder="Содержание новости"></textarea>
+            <input type="text" id="secret-code" placeholder="Введите секретный код" />
+            <button onclick="addNews()">Добавить</button>
+        </div>
+    </div>
+
+    <!-- Модальное окно для просмотра новости -->
+    <div id="news-modal">
+        <div id="news-modal-content">
+            <span class="close" onclick="closeNewsModal()">&times;</span>
+            <!-- Контент новости будет загружаться сюда -->
+        </div>
+    </div>
+
+    <!-- Подключение футера -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Подключение хедера
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+
+        // Подключение футера
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+</body>
+</html>
