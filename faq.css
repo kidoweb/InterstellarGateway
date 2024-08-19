@@ -1,0 +1,154 @@
+/* Основные стили для всей страницы */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #1b1b1b;
+    color: #fff;
+}
+
+/* Стили для центрирования основного контента */
+.unique-central-content {
+    display: flex;
+    flex-direction: column; /* Вертикальное выравнивание карточек */
+    align-items: center;     /* Центрируем карточки по горизонтали */
+    min-height: 100vh;       /* Занимает всю высоту экрана */
+    padding: 20px;
+    margin: 0 auto; /* Центрируем по горизонтали */
+    max-width: calc(100% - 550px); /* Вычисляем ширину контейнера с отступом */
+}
+
+/* Стили для анимированной карточки */
+.unique-animated-card {
+    background-color: #293347;
+    padding: 20px;
+    border-radius: 20px;
+    max-width: 1200px; /* Максимальная ширина карточки */
+    width: 100%; /* Карточка занимает всю доступную ширину контейнера */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px; /* Отступ между изображением и текстом */
+    margin-bottom: 40px; /* Отступ между карточками */
+    position: relative; /* Для позиционирования кнопки */
+}
+
+/* Эффект при наведении на карточку */
+.unique-animated-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Стили для изображения в карточке */
+.unique-animated-card img {
+    width: 300px; /* Ширина изображения */
+    height: 300px; /* Высота изображения */
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+/* Стили для текста и шагов внутри карточки */
+.unique-animated-card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Центрируем текст по вертикали относительно изображения */
+    align-items: flex-start; /* Выравниваем текст по левому краю */
+    overflow-wrap: break-word; /* Адаптивный перенос текста */
+    padding-bottom: 60px; /* Добавляем пространство снизу для кнопки */
+}
+
+/* Стили для заголовка в карточке */
+.unique-animated-card h2 {
+    color: #ffc107;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+/* Стили для списка шагов */
+.unique-steps-list {
+    margin: 20px 0;
+}
+
+/* Стили для каждого элемента шага */
+.unique-step-item {
+    margin-bottom: 15px; /* Отступ между шагами */
+}
+
+/* Стили для кнопки в каждом шаге */
+.unique-step-button {
+    display: flex;
+    align-items: center;
+}
+
+.unique-step-number {
+    font-weight: bold;
+    margin-right: 10px; /* Отступ между номером и текстом */
+    font-size: 16px; /* Размер номера шага */
+}
+
+.unique-step-text {
+    flex: 1;
+    text-align: left;
+    color: #fff;
+    font-size: 16px; /* Размер текста */
+}
+
+/* Стили для кнопки перехода к контенту */
+.unique-btn {
+    background-color: #ffc107;
+    color: #1b1b1b;
+    text-align: center;
+    padding: 15px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+    display: inline-block;
+    font-size: 16px; /* Размер текста на кнопке */
+    position: absolute; /* Позиционирование кнопки */
+    bottom: 20px; /* Отступ снизу */
+    right: 25px; /* Отступ справа от края карточки */
+}
+
+/* Эффект при наведении на кнопку */
+.unique-btn:hover {
+    background-color: #e0a800;
+    transform: scale(1.05);
+}
+
+/* Адаптивные стили для более маленьких экранов */
+@media (max-width: 768px) {
+    .unique-central-content {
+        max-width: 100%; /* Убираем ограничение ширины */
+        padding: 0; /* Убираем отступы */
+    }
+
+    .unique-animated-card {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0; /* Убираем отступ на маленьких экранах */
+        margin-right: 0; /* Убираем отступ справа на маленьких экранах */
+    }
+
+    .unique-animated-card img {
+        max-width: 100%;
+        max-height: 300px; /* Ограничение высоты для адаптивности */
+        margin-bottom: 20px;
+    }
+
+    .unique-animated-card-content {
+        max-width: 100%;
+        text-align: center; /* Центрируем текст в адаптивном режиме */
+        position: static; /* Отменяем абсолютное позиционирование кнопки */
+        padding-bottom: 20px; /* Добавляем отступ снизу для кнопки */
+    }
+
+    .unique-btn {
+        position: static; /* Отменяем позиционирование */
+        margin-top: 20px; /* Отступ сверху для кнопки */
+        right: auto; /* Сброс отступа справа */
+    }
+}

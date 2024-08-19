@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Основные стили -->
+    <link rel="stylesheet" href="faq.css">
+    
+    <!-- Подключение скриптов для частиц -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
+    <script src="js/particles.js" defer></script>
+</head>
+<body>
+    <!-- Элементы частиц -->
+    <div id="particles-js"></div>
+
+    <!-- Подключение хедера -->
+    <div id="header-placeholder"></div>
+
+    <!-- Основной контент -->
+    <main class="unique-central-content">
+        <!-- Карточка с контентом для серверов -->
+        <div class="unique-animated-card">
+            <img src="images/error.jpg" alt="Ошибка - MISSING_TEXTURE">
+
+            <div class="unique-animated-card-content">
+                <h2>Ошибка - ERROR, MISSING_TEXTURE, Missing Map</h2>
+                <div class="unique-steps-list">
+                    <div class="unique-step-item" data-sc="true">
+                        <div class="unique-step-button">
+                            <div class="unique-step-number"><i class="number">1</i><i class="fa fa-play play"></i></div>
+                            <div class="unique-step-text">Проверьте установлен ли весь контент сервера на котором вы играете</div>
+                        </div>
+                    </div>
+                    <div class="unique-step-item" data-sc="true">
+                        <div class="unique-step-button">
+                            <div class="unique-step-number"><i class="number">2</i><i class="fa fa-play play"></i></div>
+                            <div class="unique-step-text">Переустановите/Установите контент CS:S</div>
+                        </div>
+                    </div>
+                    <div class="unique-step-item" data-sc="true">
+                        <div class="unique-step-button">
+                            <div class="unique-step-number"><i class="number">3</i><i class="fa fa-play play"></i></div>
+                            <div class="unique-step-text">Введите команду в консоль: mat_specular 1</div>
+                        </div>
+                    </div>
+                    <div class="unique-step-item" data-sc="true">
+                        <div class="unique-step-button">
+                            <div class="unique-step-number"><i class="number">4</i><i class="fa fa-play play"></i></div>
+                            <div class="unique-step-text">Удалите содержимое папки C:\Program Files (x86)\Steam\steamapps\workshop\content\4000</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Кнопка перехода к контенту Galactic Conflict -->
+                <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3231427818" class="unique-btn">Контент Galactic Conflict</a>
+            </div>
+        </div>
+        
+        <!-- Новая карточка -->
+        <div class="unique-animated-card">
+            <img src="images/tech.png" alt="Техническая информация">
+
+            <div class="unique-animated-card-content">
+                <h2>Если все вышеперечисленные пункты не помогли</h2>
+                <div class="unique-steps-list">
+                    <div class="unique-step-item" data-sc="true">
+                        <div class="unique-step-button">
+                            <div class="unique-step-number"><i class="number">1</i><i class="fa fa-play play"></i></div>
+                            <div class="unique-step-text">Рекомендуем отписаться от всех сторонних аддонов (которых нет в наших контентах)</div>
+                        </div>
+                    </div>
+                    <div class="unique-step-item" data-sc="true">
+                        <div class="unique-step-button">
+                            <div class="unique-step-number"><i class="number">2</i><i class="fa fa-play play"></i></div>
+                            <div class="unique-step-text">А если и это не помогло - зайти в папку с игрой (C:\Program Files (x86)\Steam\steamapps\common\GarrysMod) и запустить файл FactoryReset-GMod.bat</div>
+                        </div>
+                    </div>
+                    <div class="unique-step-item" data-sc="true">
+                        <div class="unique-step-button">
+                            <div class="unique-step-number"><i class="number">3</i><i class="fa fa-play play"></i></div>
+                            <div class="unique-step-text">Удалите содержимое папки C:\Program Files (x86)\Steam\steamapps\workshop\content\4000</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Кнопка перехода к контенту Galactic Conflict -->
+                <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3231427818" class="unique-btn">Контент Galactic Conflict</a>
+            </div>
+        </div>
+        <!-- Третья карточка -->
+        <div class="unique-animated-card">
+        <img src="images/css.png" alt="Image 3">
+        <div class="unique-animated-card-content">
+            <h2>Как установить CSS контент</h2>
+            <div class="unique-steps-list">
+                <div class="unique-step-item">
+                    <div class="unique-step-text">1 Скачать CSS контент по <a href="https://drive.google.com/file/d/1zSCxjcUrRURexGbSkVw8wHLF1GdBIzUG/view?usp=drive_link" class="unique-link">ссылке</a></div>
+                </div>
+                <div class="unique-step-item">
+                    <div class="unique-step-text">2 Распаковать файлы в архиве по пути: C:\Program Files (x86)\Steam\steamapps\common\GarrysMod\garrysmod\addons\css_content</div>
+                </div>
+                <div class="unique-step-item">
+                    <div class="unique-step-text">3 Зайти в игру и проверить</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </main>
+
+    <!-- Подключение футера -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Подключение хедера
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+
+        // Подключение футера
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+</body>
+</html>
